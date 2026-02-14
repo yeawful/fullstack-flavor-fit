@@ -1,8 +1,10 @@
 Стэк:
--back: Nest.js, TypeScript, Prisma ORM, PostgreSQL
--front: Next.js, TypeScript, Tailwind CSS, 
-  Apollo, GraphQL, Auth + roles
+```
+-backend: Nest.js, TypeScript, Prisma ORM, PostgreSQL
 
+-frontend: Next.js, TypeScript, Tailwind CSS, 
+  Apollo, GraphQL, Auth + roles
+```
 
 ![0](https://github.com/user-attachments/assets/5a42d342-21b8-4982-bf0e-69a0f83b17cd)
 ![2](https://github.com/user-attachments/assets/df0f5ef3-1be6-472f-a6e5-804b2fb3a495)
