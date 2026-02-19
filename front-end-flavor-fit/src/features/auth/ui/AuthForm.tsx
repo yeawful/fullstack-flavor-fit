@@ -4,8 +4,8 @@ import { isEmailRegex } from '../utils/is-email.regex'
 import AuthChangeTypeForm from './AuthChangeTypeForm'
 import { Button } from '@/shared/components/ui/button'
 import { Input } from '@/shared/components/ui/input'
-import { cn } from '@/shared/utils'
 import { useMutation } from '@apollo/client/react'
+import Image from 'next/image'
 import { useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
 
@@ -39,7 +39,7 @@ export function AuthForm({ type }: Props) {
     {
       onCompleted: () => {
         toast.success(
-          isLogin ? 'Logged in successfully!' : 'Registrered successfully!',
+          isLogin ? 'Logged in successfully!' : 'Registered successfully!',
           {
             id: 'auth-success'
           }
@@ -63,9 +63,9 @@ export function AuthForm({ type }: Props) {
 
   return (
     <div className="flex h-screen">
-      <div className="m-auto w-sm rounded-lg bg-linear-to-tr from-[#8062ee] to-[#a088fc] p-5 text-white shadow-lg">
-        <h1 className="mb-5 text-center text-4xl font-bold">
-          {isLogin ? 'Login' : 'Register'}
+      <div className="relative m-auto w-sm rounded-lg bg-linear-to-tr from-[#8062ee] to-[#a088fc] p-10 text-white shadow-lg">
+        <h1 className="mb-5 text-center text-[2.3rem] font-bold">
+          {isLogin ? 'Sign In' : 'Sign Up'}
         </h1>
 
         <form
@@ -82,14 +82,13 @@ export function AuthForm({ type }: Props) {
             })}
             type="email"
             placeholder="Enter email:"
-            className={cn(
-              'border border-transparent transition-colors',
-              errors.email && 'border-red-500'
-            )}
+            aria-invalid={!!errors.password}
           />
 
           {errors.email && (
-            <p className="text-sm text-red-500">{errors.email.message}</p>
+            <p className="text-destructive -mt-1 block text-xs">
+              {errors.email.message}
+            </p>
           )}
 
           <Input
@@ -102,14 +101,13 @@ export function AuthForm({ type }: Props) {
             })}
             type="password"
             placeholder="Enter password:"
-            className={cn(
-              'border border-transparent transition-colors',
-              errors.password && 'border-red-500'
-            )}
+            aria-invalid={!!errors.password}
           />
 
           {errors.password && (
-            <p className="text-sm text-red-500">{errors.password.message}</p>
+            <p className="text-destructive -mt-1 block text-xs">
+              {errors.password.message}
+            </p>
           )}
 
           <div className="text-center">
@@ -124,6 +122,15 @@ export function AuthForm({ type }: Props) {
         </form>
 
         <AuthChangeTypeForm isLogin={isLogin} />
+
+        <Image
+          src="/images/emotions/salad.png"
+          alt="Salad"
+          width={200}
+          height={200}
+          className="absolute -bottom-16 -left-16 -rotate-12"
+          draggable={false}
+        />
       </div>
     </div>
   )

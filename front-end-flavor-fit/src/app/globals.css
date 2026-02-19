@@ -1,5 +1,4 @@
 @import 'tailwindcss';
-@import 'tw-animate-css';
 @import 'shadcn/tailwind.css';
 
 @custom-variant dark (&:is(.dark *));
@@ -87,7 +86,7 @@
   --muted: oklch(0.967 0.001 286.375);
   --muted-foreground: oklch(0.552 0.016 285.938);
 
-  --destructive: oklch(0.577 0.245 27.325);
+  --destructive: #db514b;
 
   --border: oklch(0.92 0.004 286.32);
   --input: oklch(0.92 0.004 286.32);
@@ -124,4 +123,8 @@ html {
 
 button {
   @apply cursor-pointer;
+}
+
+.link-simple {
+  @apply font-medium text-white underline underline-offset-4 transition-colors hover:text-purple-300;
 }
