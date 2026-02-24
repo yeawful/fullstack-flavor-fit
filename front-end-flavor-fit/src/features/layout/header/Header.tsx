@@ -5,11 +5,15 @@ import { Button } from '@/shared/components/ui/button'
 import { Bell, Headset } from 'lucide-react'
 import Link from 'next/link'
 
+import { useAuth } from '@/features/auth/hooks/useAuth'
+
 import { PAGES } from '@/shared/config/page.config'
 
 import { navMenuItems } from './nav.data'
 
 export function Header() {
+  const { user } = useAuth()
+
   return (
     <header className="flex items-center justify-between p-5">
       <div className="flex items-center gap-8">
@@ -38,9 +42,9 @@ export function Header() {
         </Button>
 
         <UserInfo
-          avatarUrl="https://avatars.githubusercontent.com/u/158293044"
-          name="Ilusha"
-          email="ilyapaketa@gmail.com"
+          avatarUrl="https://avatars.githubusercontent.com/u/0"
+          name={'Anonymous'}
+          email={user?.email || ''}
         />
       </div>
     </header>

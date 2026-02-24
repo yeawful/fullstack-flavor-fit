@@ -11,8 +11,10 @@ export class AuthResolver {
 
 	@Mutation(() => AuthResponse)
 	async login(@Args('data') input: AuthInput, @Context() { res }: IGqlContext) {
-		const { refreshToken, ...response } = await this.authService.login(input)
+		const { refreshToken, accessToken, ...response } =
+			await this.authService.login(input)
 
+		this.authService.toggleAccessTokenCookie(res, accessToken)
 		this.authService.toggleRefreshTokenCookie(res, refreshToken)
 
 		return response
@@ -23,8 +25,10 @@ export class AuthResolver {
 		@Args('data') input: AuthInput,
 		@Context() { res }: IGqlContext
 	) {
-		const { refreshToken, ...response } = await this.authService.register(input)
+		const { refreshToken, accessToken, ...response } =
+			await this.authService.register(input)
 
+		this.authService.toggleAccessTokenCookie(res, accessToken)
 		this.authService.toggleRefreshTokenCookie(res, refreshToken)
 
 		return response
@@ -36,13 +40,15 @@ export class AuthResolver {
 			req.cookies?.[this.authService.REFRESH_TOKEN_NAME]
 
 		if (!initialRefreshToken) {
+			this.authService.toggleAccessTokenCookie(res, null)
 			this.authService.toggleRefreshTokenCookie(res, null)
 			throw new BadRequestException('Refresh token is missing')
 		}
 
-		const { refreshToken, ...response } =
+		const { refreshToken, accessToken, ...response } =
 			await this.authService.getNewTokens(initialRefreshToken)
 
+		this.authService.toggleAccessTokenCookie(res, accessToken)
 		this.authService.toggleRefreshTokenCookie(res, refreshToken)
 
 		return response
@@ -53,12 +59,12 @@ export class AuthResolver {
 		const initialRefreshToken =
 			req.cookies?.[this.authService.REFRESH_TOKEN_NAME]
 
+		this.authService.toggleAccessTokenCookie(res, null)
+		this.authService.toggleRefreshTokenCookie(res, null)
+
 		if (!initialRefreshToken) {
-			this.authService.toggleRefreshTokenCookie(res, null)
 			throw new BadRequestException('Refresh token is missing')
 		}
-
-		this.authService.toggleRefreshTokenCookie(res, null)
 
 		return true
 	}

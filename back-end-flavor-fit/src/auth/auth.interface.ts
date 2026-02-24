@@ -13,7 +13,4 @@ export type TRequestWithUser = {
 export class AuthResponse {
 	@Field(() => UserModel)
 	user: UserModel
-
-	@Field()
-	accessToken: string
 }
