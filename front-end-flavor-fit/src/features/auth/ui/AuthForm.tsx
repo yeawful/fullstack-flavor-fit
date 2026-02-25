@@ -4,8 +4,11 @@ import { Button } from '@/shared/components/ui/button'
 import { Input } from '@/shared/components/ui/input'
 import { useApolloClient, useMutation } from '@apollo/client/react'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
+
+import { PAGES } from '@/shared/config/page.config'
 
 import {
   AuthInput,
@@ -41,6 +44,7 @@ export function AuthForm({ type }: Props) {
   })
 
   const client = useApolloClient()
+  const router = useRouter()
 
   const [auth, { loading }] = useMutation<
     LoginMutation | RegisterMutation,
@@ -62,6 +66,8 @@ export function AuthForm({ type }: Props) {
           id: 'auth-success'
         }
       )
+
+      router.replace(PAGES.DASHBOARD)
     },
 
     onError: error => {

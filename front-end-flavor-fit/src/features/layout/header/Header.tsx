@@ -9,6 +9,7 @@ import { useAuth } from '@/features/auth/hooks/useAuth'
 
 import { PAGES } from '@/shared/config/page.config'
 
+import { Logout } from '../../auth/ui/Logout'
 import { navMenuItems } from './nav.data'
 
 export function Header() {
@@ -36,16 +37,20 @@ export function Header() {
         <Button
           variant="soft"
           size="icon"
-          className="mr-6 rounded-full"
+          className="mr-2 rounded-full"
         >
           <Bell className="size-5" />
         </Button>
 
-        <UserInfo
-          avatarUrl="https://avatars.githubusercontent.com/u/0"
-          name={'Anonymous'}
-          email={user?.email || ''}
-        />
+        <Logout />
+
+        <div className="flex items-center gap-3">
+          <UserInfo
+            avatarUrl="https://avatars.githubusercontent.com/u/0"
+            name={'Anonymous'}
+            email={user?.email || ''}
+          />
+        </div>
       </div>
     </header>
   )

@@ -1,10 +1,12 @@
-import { httpLink } from './links/apollo-http.link'
 import { ApolloClient, ApolloLink, InMemoryCache } from '@apollo/client'
 
 import { IS_CLIENT } from '@/shared/constants/app.constants'
 
+import { errorLink } from './links/apollo-error.link'
+import { httpLink } from './links/apollo-http.link'
+
 const clientApolloClient = new ApolloClient({
-  link: ApolloLink.from([httpLink]),
+  link: ApolloLink.from([errorLink, httpLink]),
   cache: new InMemoryCache(),
   devtools: {
     enabled: true
