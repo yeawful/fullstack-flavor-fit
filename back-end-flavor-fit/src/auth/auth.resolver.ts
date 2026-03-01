@@ -4,12 +4,14 @@ import type { IGqlContext } from 'src/app.interface'
 import { AuthInput } from './auth.input'
 import { AuthResponse } from './auth.interface'
 import { AuthService } from './auth.service'
+import { VerifyCaptcha } from './decorators/captcha.decorator'
 
 @Resolver()
 export class AuthResolver {
 	constructor(private authService: AuthService) {}
 
 	@Mutation(() => AuthResponse)
+	@VerifyCaptcha()
 	async login(@Args('data') input: AuthInput, @Context() { res }: IGqlContext) {
 		const { refreshToken, accessToken, ...response } =
 			await this.authService.login(input)
@@ -21,6 +23,7 @@ export class AuthResolver {
 	}
 
 	@Mutation(() => AuthResponse)
+	@VerifyCaptcha()
 	async register(
 		@Args('data') input: AuthInput,
 		@Context() { res }: IGqlContext
