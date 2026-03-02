@@ -26,27 +26,42 @@ export type AggregateUser = {
 
 export type UserMinAggregateOutputType = {
   id: string | null
+  role: $Enums.Role | null
   email: string | null
   password: string | null
-  role: $Enums.Role | null
+  isEmailVerified: boolean | null
+  emailVerificationToken: string | null
+  emailVerificationTokenExpiresAt: Date | null
+  resetPasswordToken: string | null
+  resetPasswordTokenExpiresAt: Date | null
   createdAt: Date | null
   updatedAt: Date | null
 }
 
 export type UserMaxAggregateOutputType = {
   id: string | null
+  role: $Enums.Role | null
   email: string | null
   password: string | null
-  role: $Enums.Role | null
+  isEmailVerified: boolean | null
+  emailVerificationToken: string | null
+  emailVerificationTokenExpiresAt: Date | null
+  resetPasswordToken: string | null
+  resetPasswordTokenExpiresAt: Date | null
   createdAt: Date | null
   updatedAt: Date | null
 }
 
 export type UserCountAggregateOutputType = {
   id: number
+  role: number
   email: number
   password: number
-  role: number
+  isEmailVerified: number
+  emailVerificationToken: number
+  emailVerificationTokenExpiresAt: number
+  resetPasswordToken: number
+  resetPasswordTokenExpiresAt: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -55,27 +70,42 @@ export type UserCountAggregateOutputType = {
 
 export type UserMinAggregateInputType = {
   id?: true
+  role?: true
   email?: true
   password?: true
-  role?: true
+  isEmailVerified?: true
+  emailVerificationToken?: true
+  emailVerificationTokenExpiresAt?: true
+  resetPasswordToken?: true
+  resetPasswordTokenExpiresAt?: true
   createdAt?: true
   updatedAt?: true
 }
 
 export type UserMaxAggregateInputType = {
   id?: true
+  role?: true
   email?: true
   password?: true
-  role?: true
+  isEmailVerified?: true
+  emailVerificationToken?: true
+  emailVerificationTokenExpiresAt?: true
+  resetPasswordToken?: true
+  resetPasswordTokenExpiresAt?: true
   createdAt?: true
   updatedAt?: true
 }
 
 export type UserCountAggregateInputType = {
   id?: true
+  role?: true
   email?: true
   password?: true
-  role?: true
+  isEmailVerified?: true
+  emailVerificationToken?: true
+  emailVerificationTokenExpiresAt?: true
+  resetPasswordToken?: true
+  resetPasswordTokenExpiresAt?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -155,9 +185,14 @@ export type UserGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
 
 export type UserGroupByOutputType = {
   id: string
+  role: $Enums.Role
   email: string
   password: string
-  role: $Enums.Role
+  isEmailVerified: boolean
+  emailVerificationToken: string | null
+  emailVerificationTokenExpiresAt: Date | null
+  resetPasswordToken: string | null
+  resetPasswordTokenExpiresAt: Date | null
   createdAt: Date
   updatedAt: Date
   _count: UserCountAggregateOutputType | null
@@ -185,9 +220,14 @@ export type UserWhereInput = {
   OR?: Prisma.UserWhereInput[]
   NOT?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
   id?: Prisma.StringFilter<"User"> | string
+  role?: Prisma.EnumRoleFilter<"User"> | $Enums.Role
   email?: Prisma.StringFilter<"User"> | string
   password?: Prisma.StringFilter<"User"> | string
-  role?: Prisma.EnumRoleFilter<"User"> | $Enums.Role
+  isEmailVerified?: Prisma.BoolFilter<"User"> | boolean
+  emailVerificationToken?: Prisma.StringNullableFilter<"User"> | string | null
+  emailVerificationTokenExpiresAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
+  resetPasswordToken?: Prisma.StringNullableFilter<"User"> | string | null
+  resetPasswordTokenExpiresAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
   profile?: Prisma.XOR<Prisma.ProfileNullableScalarRelationFilter, Prisma.ProfileWhereInput> | null
@@ -200,9 +240,14 @@ export type UserWhereInput = {
 
 export type UserOrderByWithRelationInput = {
   id?: Prisma.SortOrder
+  role?: Prisma.SortOrder
   email?: Prisma.SortOrder
   password?: Prisma.SortOrder
-  role?: Prisma.SortOrder
+  isEmailVerified?: Prisma.SortOrder
+  emailVerificationToken?: Prisma.SortOrderInput | Prisma.SortOrder
+  emailVerificationTokenExpiresAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  resetPasswordToken?: Prisma.SortOrderInput | Prisma.SortOrder
+  resetPasswordTokenExpiresAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   profile?: Prisma.ProfileOrderByWithRelationInput
@@ -219,8 +264,13 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
   OR?: Prisma.UserWhereInput[]
   NOT?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
-  password?: Prisma.StringFilter<"User"> | string
   role?: Prisma.EnumRoleFilter<"User"> | $Enums.Role
+  password?: Prisma.StringFilter<"User"> | string
+  isEmailVerified?: Prisma.BoolFilter<"User"> | boolean
+  emailVerificationToken?: Prisma.StringNullableFilter<"User"> | string | null
+  emailVerificationTokenExpiresAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
+  resetPasswordToken?: Prisma.StringNullableFilter<"User"> | string | null
+  resetPasswordTokenExpiresAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
   profile?: Prisma.XOR<Prisma.ProfileNullableScalarRelationFilter, Prisma.ProfileWhereInput> | null
@@ -233,9 +283,14 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
 
 export type UserOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
+  role?: Prisma.SortOrder
   email?: Prisma.SortOrder
   password?: Prisma.SortOrder
-  role?: Prisma.SortOrder
+  isEmailVerified?: Prisma.SortOrder
+  emailVerificationToken?: Prisma.SortOrderInput | Prisma.SortOrder
+  emailVerificationTokenExpiresAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  resetPasswordToken?: Prisma.SortOrderInput | Prisma.SortOrder
+  resetPasswordTokenExpiresAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.UserCountOrderByAggregateInput
@@ -248,18 +303,28 @@ export type UserScalarWhereWithAggregatesInput = {
   OR?: Prisma.UserScalarWhereWithAggregatesInput[]
   NOT?: Prisma.UserScalarWhereWithAggregatesInput | Prisma.UserScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"User"> | string
+  role?: Prisma.EnumRoleWithAggregatesFilter<"User"> | $Enums.Role
   email?: Prisma.StringWithAggregatesFilter<"User"> | string
   password?: Prisma.StringWithAggregatesFilter<"User"> | string
-  role?: Prisma.EnumRoleWithAggregatesFilter<"User"> | $Enums.Role
+  isEmailVerified?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
+  emailVerificationToken?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  emailVerificationTokenExpiresAt?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
+  resetPasswordToken?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  resetPasswordTokenExpiresAt?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
 }
 
 export type UserCreateInput = {
   id?: string
+  role?: $Enums.Role
   email: string
   password: string
-  role?: $Enums.Role
+  isEmailVerified?: boolean
+  emailVerificationToken?: string | null
+  emailVerificationTokenExpiresAt?: Date | string | null
+  resetPasswordToken?: string | null
+  resetPasswordTokenExpiresAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedOneWithoutUserInput
@@ -272,9 +337,14 @@ export type UserCreateInput = {
 
 export type UserUncheckedCreateInput = {
   id?: string
+  role?: $Enums.Role
   email: string
   password: string
-  role?: $Enums.Role
+  isEmailVerified?: boolean
+  emailVerificationToken?: string | null
+  emailVerificationTokenExpiresAt?: Date | string | null
+  resetPasswordToken?: string | null
+  resetPasswordTokenExpiresAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput
@@ -287,9 +357,14 @@ export type UserUncheckedCreateInput = {
 
 export type UserUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailVerificationToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerificationTokenExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetPasswordToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetPasswordTokenExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput
@@ -302,9 +377,14 @@ export type UserUpdateInput = {
 
 export type UserUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailVerificationToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerificationTokenExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetPasswordToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetPasswordTokenExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -317,27 +397,42 @@ export type UserUncheckedUpdateInput = {
 
 export type UserCreateManyInput = {
   id?: string
+  role?: $Enums.Role
   email: string
   password: string
-  role?: $Enums.Role
+  isEmailVerified?: boolean
+  emailVerificationToken?: string | null
+  emailVerificationTokenExpiresAt?: Date | string | null
+  resetPasswordToken?: string | null
+  resetPasswordTokenExpiresAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
 
 export type UserUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailVerificationToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerificationTokenExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetPasswordToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetPasswordTokenExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type UserUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailVerificationToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerificationTokenExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetPasswordToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetPasswordTokenExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -349,27 +444,42 @@ export type UserScalarRelationFilter = {
 
 export type UserCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  role?: Prisma.SortOrder
   email?: Prisma.SortOrder
   password?: Prisma.SortOrder
-  role?: Prisma.SortOrder
+  isEmailVerified?: Prisma.SortOrder
+  emailVerificationToken?: Prisma.SortOrder
+  emailVerificationTokenExpiresAt?: Prisma.SortOrder
+  resetPasswordToken?: Prisma.SortOrder
+  resetPasswordTokenExpiresAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
 export type UserMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  role?: Prisma.SortOrder
   email?: Prisma.SortOrder
   password?: Prisma.SortOrder
-  role?: Prisma.SortOrder
+  isEmailVerified?: Prisma.SortOrder
+  emailVerificationToken?: Prisma.SortOrder
+  emailVerificationTokenExpiresAt?: Prisma.SortOrder
+  resetPasswordToken?: Prisma.SortOrder
+  resetPasswordTokenExpiresAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
 export type UserMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  role?: Prisma.SortOrder
   email?: Prisma.SortOrder
   password?: Prisma.SortOrder
-  role?: Prisma.SortOrder
+  isEmailVerified?: Prisma.SortOrder
+  emailVerificationToken?: Prisma.SortOrder
+  emailVerificationTokenExpiresAt?: Prisma.SortOrder
+  resetPasswordToken?: Prisma.SortOrder
+  resetPasswordTokenExpiresAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -434,6 +544,18 @@ export type EnumRoleFieldUpdateOperationsInput = {
   set?: $Enums.Role
 }
 
+export type BoolFieldUpdateOperationsInput = {
+  set?: boolean
+}
+
+export type NullableStringFieldUpdateOperationsInput = {
+  set?: string | null
+}
+
+export type NullableDateTimeFieldUpdateOperationsInput = {
+  set?: Date | string | null
+}
+
 export type UserCreateNestedOneWithoutProfileInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutProfileInput, Prisma.UserUncheckedCreateWithoutProfileInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutProfileInput
@@ -464,9 +586,14 @@ export type UserUpdateOneRequiredWithoutMeasurementsNestedInput = {
 
 export type UserCreateWithoutOrdersInput = {
   id?: string
+  role?: $Enums.Role
   email: string
   password: string
-  role?: $Enums.Role
+  isEmailVerified?: boolean
+  emailVerificationToken?: string | null
+  emailVerificationTokenExpiresAt?: Date | string | null
+  resetPasswordToken?: string | null
+  resetPasswordTokenExpiresAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedOneWithoutUserInput
@@ -478,9 +605,14 @@ export type UserCreateWithoutOrdersInput = {
 
 export type UserUncheckedCreateWithoutOrdersInput = {
   id?: string
+  role?: $Enums.Role
   email: string
   password: string
-  role?: $Enums.Role
+  isEmailVerified?: boolean
+  emailVerificationToken?: string | null
+  emailVerificationTokenExpiresAt?: Date | string | null
+  resetPasswordToken?: string | null
+  resetPasswordTokenExpiresAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput
@@ -508,9 +640,14 @@ export type UserUpdateToOneWithWhereWithoutOrdersInput = {
 
 export type UserUpdateWithoutOrdersInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailVerificationToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerificationTokenExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetPasswordToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetPasswordTokenExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput
@@ -522,9 +659,14 @@ export type UserUpdateWithoutOrdersInput = {
 
 export type UserUncheckedUpdateWithoutOrdersInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailVerificationToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerificationTokenExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetPasswordToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetPasswordTokenExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -536,9 +678,14 @@ export type UserUncheckedUpdateWithoutOrdersInput = {
 
 export type UserCreateWithoutCommentsInput = {
   id?: string
+  role?: $Enums.Role
   email: string
   password: string
-  role?: $Enums.Role
+  isEmailVerified?: boolean
+  emailVerificationToken?: string | null
+  emailVerificationTokenExpiresAt?: Date | string | null
+  resetPasswordToken?: string | null
+  resetPasswordTokenExpiresAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedOneWithoutUserInput
@@ -550,9 +697,14 @@ export type UserCreateWithoutCommentsInput = {
 
 export type UserUncheckedCreateWithoutCommentsInput = {
   id?: string
+  role?: $Enums.Role
   email: string
   password: string
-  role?: $Enums.Role
+  isEmailVerified?: boolean
+  emailVerificationToken?: string | null
+  emailVerificationTokenExpiresAt?: Date | string | null
+  resetPasswordToken?: string | null
+  resetPasswordTokenExpiresAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput
@@ -580,9 +732,14 @@ export type UserUpdateToOneWithWhereWithoutCommentsInput = {
 
 export type UserUpdateWithoutCommentsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailVerificationToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerificationTokenExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetPasswordToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetPasswordTokenExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput
@@ -594,9 +751,14 @@ export type UserUpdateWithoutCommentsInput = {
 
 export type UserUncheckedUpdateWithoutCommentsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailVerificationToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerificationTokenExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetPasswordToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetPasswordTokenExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -608,9 +770,14 @@ export type UserUncheckedUpdateWithoutCommentsInput = {
 
 export type UserCreateWithoutLikesInput = {
   id?: string
+  role?: $Enums.Role
   email: string
   password: string
-  role?: $Enums.Role
+  isEmailVerified?: boolean
+  emailVerificationToken?: string | null
+  emailVerificationTokenExpiresAt?: Date | string | null
+  resetPasswordToken?: string | null
+  resetPasswordTokenExpiresAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedOneWithoutUserInput
@@ -622,9 +789,14 @@ export type UserCreateWithoutLikesInput = {
 
 export type UserUncheckedCreateWithoutLikesInput = {
   id?: string
+  role?: $Enums.Role
   email: string
   password: string
-  role?: $Enums.Role
+  isEmailVerified?: boolean
+  emailVerificationToken?: string | null
+  emailVerificationTokenExpiresAt?: Date | string | null
+  resetPasswordToken?: string | null
+  resetPasswordTokenExpiresAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput
@@ -652,9 +824,14 @@ export type UserUpdateToOneWithWhereWithoutLikesInput = {
 
 export type UserUpdateWithoutLikesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailVerificationToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerificationTokenExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetPasswordToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetPasswordTokenExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput
@@ -666,9 +843,14 @@ export type UserUpdateWithoutLikesInput = {
 
 export type UserUncheckedUpdateWithoutLikesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailVerificationToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerificationTokenExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetPasswordToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetPasswordTokenExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -680,9 +862,14 @@ export type UserUncheckedUpdateWithoutLikesInput = {
 
 export type UserCreateWithoutRecipesInput = {
   id?: string
+  role?: $Enums.Role
   email: string
   password: string
-  role?: $Enums.Role
+  isEmailVerified?: boolean
+  emailVerificationToken?: string | null
+  emailVerificationTokenExpiresAt?: Date | string | null
+  resetPasswordToken?: string | null
+  resetPasswordTokenExpiresAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedOneWithoutUserInput
@@ -694,9 +881,14 @@ export type UserCreateWithoutRecipesInput = {
 
 export type UserUncheckedCreateWithoutRecipesInput = {
   id?: string
+  role?: $Enums.Role
   email: string
   password: string
-  role?: $Enums.Role
+  isEmailVerified?: boolean
+  emailVerificationToken?: string | null
+  emailVerificationTokenExpiresAt?: Date | string | null
+  resetPasswordToken?: string | null
+  resetPasswordTokenExpiresAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput
@@ -724,9 +916,14 @@ export type UserUpdateToOneWithWhereWithoutRecipesInput = {
 
 export type UserUpdateWithoutRecipesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailVerificationToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerificationTokenExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetPasswordToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetPasswordTokenExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput
@@ -738,9 +935,14 @@ export type UserUpdateWithoutRecipesInput = {
 
 export type UserUncheckedUpdateWithoutRecipesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailVerificationToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerificationTokenExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetPasswordToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetPasswordTokenExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -752,9 +954,14 @@ export type UserUncheckedUpdateWithoutRecipesInput = {
 
 export type UserCreateWithoutProfileInput = {
   id?: string
+  role?: $Enums.Role
   email: string
   password: string
-  role?: $Enums.Role
+  isEmailVerified?: boolean
+  emailVerificationToken?: string | null
+  emailVerificationTokenExpiresAt?: Date | string | null
+  resetPasswordToken?: string | null
+  resetPasswordTokenExpiresAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   measurements?: Prisma.BodyMeasurementCreateNestedOneWithoutUserInput
@@ -766,9 +973,14 @@ export type UserCreateWithoutProfileInput = {
 
 export type UserUncheckedCreateWithoutProfileInput = {
   id?: string
+  role?: $Enums.Role
   email: string
   password: string
-  role?: $Enums.Role
+  isEmailVerified?: boolean
+  emailVerificationToken?: string | null
+  emailVerificationTokenExpiresAt?: Date | string | null
+  resetPasswordToken?: string | null
+  resetPasswordTokenExpiresAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   measurements?: Prisma.BodyMeasurementUncheckedCreateNestedOneWithoutUserInput
@@ -796,9 +1008,14 @@ export type UserUpdateToOneWithWhereWithoutProfileInput = {
 
 export type UserUpdateWithoutProfileInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailVerificationToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerificationTokenExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetPasswordToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetPasswordTokenExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   measurements?: Prisma.BodyMeasurementUpdateOneWithoutUserNestedInput
@@ -810,9 +1027,14 @@ export type UserUpdateWithoutProfileInput = {
 
 export type UserUncheckedUpdateWithoutProfileInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailVerificationToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerificationTokenExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetPasswordToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetPasswordTokenExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   measurements?: Prisma.BodyMeasurementUncheckedUpdateOneWithoutUserNestedInput
@@ -824,9 +1046,14 @@ export type UserUncheckedUpdateWithoutProfileInput = {
 
 export type UserCreateWithoutMeasurementsInput = {
   id?: string
+  role?: $Enums.Role
   email: string
   password: string
-  role?: $Enums.Role
+  isEmailVerified?: boolean
+  emailVerificationToken?: string | null
+  emailVerificationTokenExpiresAt?: Date | string | null
+  resetPasswordToken?: string | null
+  resetPasswordTokenExpiresAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedOneWithoutUserInput
@@ -838,9 +1065,14 @@ export type UserCreateWithoutMeasurementsInput = {
 
 export type UserUncheckedCreateWithoutMeasurementsInput = {
   id?: string
+  role?: $Enums.Role
   email: string
   password: string
-  role?: $Enums.Role
+  isEmailVerified?: boolean
+  emailVerificationToken?: string | null
+  emailVerificationTokenExpiresAt?: Date | string | null
+  resetPasswordToken?: string | null
+  resetPasswordTokenExpiresAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput
@@ -868,9 +1100,14 @@ export type UserUpdateToOneWithWhereWithoutMeasurementsInput = {
 
 export type UserUpdateWithoutMeasurementsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailVerificationToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerificationTokenExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetPasswordToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetPasswordTokenExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput
@@ -882,9 +1119,14 @@ export type UserUpdateWithoutMeasurementsInput = {
 
 export type UserUncheckedUpdateWithoutMeasurementsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailVerificationToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerificationTokenExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetPasswordToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetPasswordTokenExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -954,9 +1196,14 @@ export type UserCountOutputTypeCountOrdersArgs<ExtArgs extends runtime.Types.Ext
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  role?: boolean
   email?: boolean
   password?: boolean
-  role?: boolean
+  isEmailVerified?: boolean
+  emailVerificationToken?: boolean
+  emailVerificationTokenExpiresAt?: boolean
+  resetPasswordToken?: boolean
+  resetPasswordTokenExpiresAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   profile?: boolean | Prisma.User$profileArgs<ExtArgs>
@@ -970,32 +1217,47 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
 
 export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  role?: boolean
   email?: boolean
   password?: boolean
-  role?: boolean
+  isEmailVerified?: boolean
+  emailVerificationToken?: boolean
+  emailVerificationTokenExpiresAt?: boolean
+  resetPasswordToken?: boolean
+  resetPasswordTokenExpiresAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  role?: boolean
   email?: boolean
   password?: boolean
-  role?: boolean
+  isEmailVerified?: boolean
+  emailVerificationToken?: boolean
+  emailVerificationTokenExpiresAt?: boolean
+  resetPasswordToken?: boolean
+  resetPasswordTokenExpiresAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectScalar = {
   id?: boolean
+  role?: boolean
   email?: boolean
   password?: boolean
-  role?: boolean
+  isEmailVerified?: boolean
+  emailVerificationToken?: boolean
+  emailVerificationTokenExpiresAt?: boolean
+  resetPasswordToken?: boolean
+  resetPasswordTokenExpiresAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "password" | "role" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "role" | "email" | "password" | "isEmailVerified" | "emailVerificationToken" | "emailVerificationTokenExpiresAt" | "resetPasswordToken" | "resetPasswordTokenExpiresAt" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   profile?: boolean | Prisma.User$profileArgs<ExtArgs>
   measurements?: boolean | Prisma.User$measurementsArgs<ExtArgs>
@@ -1020,9 +1282,14 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
+    role: $Enums.Role
     email: string
     password: string
-    role: $Enums.Role
+    isEmailVerified: boolean
+    emailVerificationToken: string | null
+    emailVerificationTokenExpiresAt: Date | null
+    resetPasswordToken: string | null
+    resetPasswordTokenExpiresAt: Date | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["user"]>
@@ -1455,9 +1722,14 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
  */
 export interface UserFieldRefs {
   readonly id: Prisma.FieldRef<"User", 'String'>
+  readonly role: Prisma.FieldRef<"User", 'Role'>
   readonly email: Prisma.FieldRef<"User", 'String'>
   readonly password: Prisma.FieldRef<"User", 'String'>
-  readonly role: Prisma.FieldRef<"User", 'Role'>
+  readonly isEmailVerified: Prisma.FieldRef<"User", 'Boolean'>
+  readonly emailVerificationToken: Prisma.FieldRef<"User", 'String'>
+  readonly emailVerificationTokenExpiresAt: Prisma.FieldRef<"User", 'DateTime'>
+  readonly resetPasswordToken: Prisma.FieldRef<"User", 'String'>
+  readonly resetPasswordTokenExpiresAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly createdAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"User", 'DateTime'>
 }

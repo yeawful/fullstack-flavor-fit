@@ -7,11 +7,13 @@ import { ConfigService } from '@nestjs/config'
 import { JwtService } from '@nestjs/jwt'
 import { hash, verify } from 'argon2'
 import { Response } from 'express'
+import { EmailService } from 'src/email/email.service'
 import { PrismaService } from 'src/prisma/prisma.service'
 import { UsersService } from 'src/users/users.service'
+import { generateToken } from 'src/utils/generate-token.util'
 import { isDev } from 'src/utils/is-dev.util'
-import { AuthInput } from './auth.input'
 import { TAuthTokerData } from './auth.interface'
+import { AuthInput } from './inputs/auth.input'
 
 @Injectable()
 export class AuthService {
@@ -19,7 +21,8 @@ export class AuthService {
 		private prisma: PrismaService,
 		private configService: ConfigService,
 		private jwt: JwtService,
-		private usersService: UsersService
+		private usersService: UsersService,
+		private emailService: EmailService
 	) {}
 
 	private readonly EXPIRE_HOURS_ACCESS_TOKEN = 1
@@ -44,10 +47,14 @@ export class AuthService {
 				throw new BadRequestException('User with this email already exist')
 			}
 
+			const emailVerificationToken = generateToken()
+
 			const user = await this.prisma.user.create({
 				data: {
 					email: email,
-					password: await hash(input.password)
+					password: await hash(input.password),
+					emailVerificationToken,
+					emailVerificationTokenExpiresAt: new Date(Date.now() + 1000 * 60 * 60)
 				}
 			})
 
@@ -55,6 +62,12 @@ export class AuthService {
 				id: user.id,
 				role: user.role
 			})
+
+			const verificationUrl = `${this.configService.get(
+				'CLIENT_URL'
+			)}/verify-email?token=${emailVerificationToken}`
+
+			await this.emailService.sendVerificationEmail(user.email, verificationUrl)
 
 			return { user, ...tokens }
 		} catch (error) {
