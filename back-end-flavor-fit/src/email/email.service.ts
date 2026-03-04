@@ -10,7 +10,7 @@ export class EmailService {
 
 	private async send(to: string, subject: string, html: string) {
 		return this.resend.send({
-			from: '<onboarding@resend.dev>',
+			from: 'onboarding@resend.dev',
 			to,
 			subject,
 			html

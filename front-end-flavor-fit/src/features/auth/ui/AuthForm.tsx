@@ -1,5 +1,6 @@
 'use client'
 
+import TurnstileCaptcha from '@/shared/components/custom-ui/captcha/TurnstileCaptcha'
 import { Button } from '@/shared/components/ui/button'
 import { Input } from '@/shared/components/ui/input'
 import { useApolloClient, useMutation } from '@apollo/client/react'
@@ -9,6 +10,8 @@ import { useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
 
 import { PAGES } from '@/shared/config/page.config'
+
+import { useTurnstileCaptcha } from '@/shared/hooks/useTurnstileCaptcha'
 
 import {
   AuthInput,
@@ -43,6 +46,15 @@ export function AuthForm({ type }: Props) {
     }
   })
 
+  const {
+    ref,
+    validateCaptcha,
+    captchaHeaders,
+    handleSuccess,
+    handleExpire,
+    resetCaptcha
+  } = useTurnstileCaptcha()
+
   const client = useApolloClient()
   const router = useRouter()
 
@@ -74,13 +86,19 @@ export function AuthForm({ type }: Props) {
       toast.error(error.message, {
         id: 'auth-error'
       })
+      resetCaptcha()
     }
   })
 
   const handleAuth = (data: AuthInput) => {
+    if (!validateCaptcha()) return
+
     auth({
       variables: {
         data
+      },
+      context: {
+        headers: captchaHeaders
       }
     })
   }
@@ -106,7 +124,7 @@ export function AuthForm({ type }: Props) {
             })}
             type="email"
             placeholder="Enter email:"
-            aria-invalid={!!errors.password}
+            aria-invalid={!!errors.email}
           />
 
           {errors.email && (
@@ -133,6 +151,12 @@ export function AuthForm({ type }: Props) {
               {errors.password.message}
             </p>
           )}
+
+          <TurnstileCaptcha
+            ref={ref}
+            onSuccess={handleSuccess}
+            onExpire={handleExpire}
+          />
 
           <div className="text-center">
             <Button

@@ -18,7 +18,10 @@ export class AuthResolver {
 
 	@Mutation(() => AuthResponse)
 	@VerifyCaptcha()
-	async login(@Args('data') input: AuthInput, @Context() { res }: IGqlContext) {
+	async login(
+		@Args('data', { type: () => AuthInput }) input: AuthInput,
+		@Context() { res }: IGqlContext
+	) {
 		const { refreshToken, accessToken, ...response } =
 			await this.authService.login(input)
 
@@ -31,7 +34,7 @@ export class AuthResolver {
 	@Mutation(() => AuthResponse)
 	@VerifyCaptcha()
 	async register(
-		@Args('data') input: AuthInput,
+		@Args('data', { type: () => AuthInput }) input: AuthInput,
 		@Context() { res }: IGqlContext
 	) {
 		const { refreshToken, accessToken, ...response } =
@@ -70,13 +73,18 @@ export class AuthResolver {
 
 	@Mutation(() => Boolean)
 	@VerifyCaptcha()
-	async requestPasswordReset(@Args('data') input: RequestPasswordResetInput) {
+	async requestPasswordReset(
+		@Args('data', { type: () => RequestPasswordResetInput })
+		input: RequestPasswordResetInput
+	) {
 		return this.authAccountService.requestPasswordReset(input.email)
 	}
 
 	@Mutation(() => Boolean)
 	@VerifyCaptcha()
-	async resetPassword(@Args('data') input: ResetPasswordInput) {
+	async resetPassword(
+		@Args('data', { type: () => ResetPasswordInput }) input: ResetPasswordInput
+	) {
 		return this.authAccountService.resetPassword(input.token, input.newPassword)
 	}
 
