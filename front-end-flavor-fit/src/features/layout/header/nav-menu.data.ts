@@ -4,8 +4,8 @@ import {
   CalendarDays,
   ChartColumn,
   House,
+  Settings,
   Store,
-  Users,
   Utensils
 } from 'lucide-react'
 
@@ -43,8 +43,8 @@ export const navMenuItems: IMenuItem[] = [
     href: PAGES.RECIPES
   },
   {
-    icon: Users,
-    label: 'Forum',
-    href: PAGES.FORUM
+    icon: Settings,
+    label: 'Profile',
+    href: PAGES.PROFILE
   }
 ]

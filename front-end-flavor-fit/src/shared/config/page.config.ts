@@ -8,7 +8,7 @@ class PageConfig {
   readonly ANALYTICS = this.DASHBOARD + '/analytics'
   readonly ORDER_GROCERIES = this.DASHBOARD + '/order-groceries'
   readonly RECIPES = this.DASHBOARD + '/recipes'
-  readonly FORUM = this.DASHBOARD + '/forum'
+  readonly PROFILE = this.DASHBOARD + '/profile'
 
   private readonly AUTH = '/auth'
   readonly LOGIN = this.AUTH + '/login'

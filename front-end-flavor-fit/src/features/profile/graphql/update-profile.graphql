@@ -1,0 +1,23 @@
+mutation UpdateProfile($data: UserUpdateCustomInput!) {
+  updateProfile(data: $data) {
+    id
+    email
+    profile {
+      fullName
+      gender
+      age
+      bio
+    }
+    measurements {
+      heightCm
+      weightKg
+      goalWeightKg
+      chestCm
+      waistCm
+      thighCm
+      armCm
+      activityLevel
+      nutritionGoal
+    }
+  }
+}

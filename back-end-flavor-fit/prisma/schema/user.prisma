@@ -1,8 +1,11 @@
 model User {
   id String @id @default(cuid())
 
-  role     Role   @default(USER)
-  email    String @unique
+  role  Role   @default(USER)
+  email String @unique
+
+  avatarUrl String? @map("avatarUrl")
+
   password String
 
   isEmailVerified                 Boolean   @default(false) @map("is_email_verified")

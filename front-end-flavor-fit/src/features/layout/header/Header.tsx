@@ -10,13 +10,13 @@ import { useAuth } from '@/features/auth/hooks/useAuth'
 import { PAGES } from '@/shared/config/page.config'
 
 import { Logout } from '../../auth/ui/Logout'
-import { navMenuItems } from './nav.data'
+import { navMenuItems } from './nav-menu.data'
 
 export function Header() {
   const { user } = useAuth()
 
   return (
-    <header className="flex items-center justify-between p-5">
+    <header className="flex items-center justify-between">
       <div className="flex items-center gap-8">
         <Link
           href={PAGES.DASHBOARD}
