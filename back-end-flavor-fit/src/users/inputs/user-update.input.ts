@@ -8,6 +8,9 @@ export class UserUpdateCustomInput {
 	email?: string
 
 	@Field(() => String, { nullable: true })
+	avatarUrl?: string
+
+	@Field(() => String, { nullable: true })
 	password?: string
 
 	@Field(() => ProfileUpdateInput, { nullable: true })

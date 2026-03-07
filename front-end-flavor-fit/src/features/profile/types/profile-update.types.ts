@@ -1,7 +1,8 @@
 import type {
   ActivityLevel,
   Gender,
-  NutritionGoal
+  NutritionGoal,
+  UserUpdateCustomInput
 } from '@/__generated__/graphql'
 
 export interface IProfileForm {
@@ -24,3 +25,5 @@ export interface IProfileForm {
 
   avatarUrl?: string
 }
+
+export type TProfileForm = Omit<UserUpdateCustomInput, 'password'>

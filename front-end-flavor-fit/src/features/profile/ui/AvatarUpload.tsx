@@ -36,7 +36,7 @@ export function AvatarUpload({ value, onChange }: Props) {
   return (
     <div className="flex items-center gap-3">
       <Image
-        src={value || '/images/avatar-placeholder.jpg'}
+        src={value || '/images/avatar-placeholder.png'}
         width={48}
         height={48}
         alt="avatar"
@@ -45,7 +45,7 @@ export function AvatarUpload({ value, onChange }: Props) {
 
       <label>
         <input
-          type="text"
+          type="file"
           hidden
           accept="image/*"
           onChange={e => {

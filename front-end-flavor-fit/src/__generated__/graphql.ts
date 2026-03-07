@@ -455,6 +455,7 @@ export type UserModel = {
 };
 
 export type UserUpdateCustomInput = {
+  avatarUrl?: InputMaybe<Scalars['String']['input']>;
   email?: InputMaybe<Scalars['String']['input']>;
   measurements?: InputMaybe<BodyMeasurementUpdateInput>;
   password?: InputMaybe<Scalars['String']['input']>;

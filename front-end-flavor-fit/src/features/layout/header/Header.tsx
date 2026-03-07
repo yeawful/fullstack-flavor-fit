@@ -46,7 +46,7 @@ export function Header() {
 
         <div className="flex items-center gap-3">
           <UserInfo
-            avatarUrl="https://avatars.githubusercontent.com/u/0"
+            avatarUrl={'/images/avatar-placeholder.png'}
             name={'Anonymous'}
             email={user?.email || ''}
           />
