@@ -6,7 +6,7 @@ import { Input } from '../../ui/input'
 import { LabelIcon } from './LabelIcon'
 
 interface Props extends ComponentProps<'input'> {
-  label: string
+  label?: string
   Icon: LucideIcon
 }
 
@@ -19,8 +19,8 @@ export function InputLabel({ label, Icon, className, ...props }: Props) {
       />
 
       <Input
-        className={cn(className, 'rounded-xl bg-[#ececec] pl-9')}
         {...props}
+        className={cn('rounded-xl bg-[#f0efef] pl-9', className)}
       />
     </label>
   )

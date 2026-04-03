@@ -16,7 +16,7 @@ export function BodyMeasurementsForm({
   const { register } = form
 
   return (
-    <div className="flex items-center gap-6 rounded-xl border bg-white p-6">
+    <div className="flex items-center gap-6 rounded-xl border p-6">
       <Image
         src="/images/women.jpeg"
         alt="Women"

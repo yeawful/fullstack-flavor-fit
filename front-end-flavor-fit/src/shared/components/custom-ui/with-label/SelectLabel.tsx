@@ -37,10 +37,10 @@ export function SelectLabel({
         value={value || undefined}
         onValueChange={onChange}
       >
-        <SelectTrigger className="w-full rounded-xl bg-[#ececec] pl-9">
+        <SelectTrigger className="w-full rounded-xl bg-[#f0efef] pl-9">
           <SelectValue placeholder={label} />
         </SelectTrigger>
-        <SelectContent className="bg-[#ececec]">
+        <SelectContent className="bg-[#f0efef]">
           <SelectGroup>
             <SelectInsideLabel>{label}</SelectInsideLabel>
             {options.map(option => (

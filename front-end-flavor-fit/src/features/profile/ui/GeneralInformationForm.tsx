@@ -16,7 +16,7 @@ export function GeneralInformationForm({
   const { register } = form
 
   return (
-    <div className="rounded-xl border bg-white p-6">
+    <div className="rounded-xl border p-6">
       <h2 className="mb-6 text-lg font-semibold">General information</h2>
 
       <div className="space-y-4">
@@ -77,7 +77,7 @@ export function GeneralInformationForm({
         <label className="relative block">
           <span className="mb-1.5 block text-sm opacity-50">Bio</span>
           <textarea
-            className="w-full resize-none rounded-md border bg-[#ececec] p-3 font-mono"
+            className="w-full resize-none rounded-md border bg-[#f0efef] p-3 font-mono"
             placeholder="Bio"
             {...register('profile.bio')}
           />

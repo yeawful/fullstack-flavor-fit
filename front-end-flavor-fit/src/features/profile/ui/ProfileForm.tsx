@@ -55,7 +55,7 @@ export function ProfileForm({ data }: { data: GetProfileQuery }) {
   })
 
   return (
-    <div>
+    <div className="rounded-xl bg-white p-6">
       <form
         onSubmit={submit}
         className="space-y-6"
