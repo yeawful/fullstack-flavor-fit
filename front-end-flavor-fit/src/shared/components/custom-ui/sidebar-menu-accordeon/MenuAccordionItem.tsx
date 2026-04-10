@@ -25,7 +25,7 @@ export function MenuAccordionItem({ item, activeValue, onValueChange }: Props) {
           }
         )}
       >
-        <span className="flex items-center gap-2 text-sm font-semibold">
+        <span className="flex items-center gap-2 font-semibold">
           <item.icon size={22} />
           {item.name}
         </span>
@@ -33,7 +33,7 @@ export function MenuAccordionItem({ item, activeValue, onValueChange }: Props) {
         <ChevronDown size={20} />
       </CollapsibleTrigger>
       <CollapsibleContent>
-        <ul className="space-y-2 pt-2 pl-4 text-sm">
+        <ul className="space-y-2 pt-2 pl-4">
           {item.items.map(child => (
             <li
               key={child.value}
