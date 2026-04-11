@@ -3445,6 +3445,36 @@
         "possibleTypes": null
       },
       {
+        "kind": "ENUM",
+        "name": "RecipeSort",
+        "description": "Sorting options for recipes",
+        "isOneOf": null,
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": [
+          {
+            "name": "NEW",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "POPULAR",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "RECOMMENDED",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "possibleTypes": null
+      },
+      {
         "kind": "INPUT_OBJECT",
         "name": "RecipeStepInput",
         "description": null,
@@ -3823,11 +3853,11 @@
             "name": "sort",
             "description": null,
             "type": {
-              "kind": "SCALAR",
-              "name": "String",
+              "kind": "ENUM",
+              "name": "RecipeSort",
               "ofType": null
             },
-            "defaultValue": null,
+            "defaultValue": "NEW",
             "isDeprecated": false,
             "deprecationReason": null
           },

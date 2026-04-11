@@ -18,7 +18,7 @@ export function UserInfo({ avatarUrl, name, email }: Props) {
       />
       <div>
         <p className="font-medium">{name}</p>
-        <p className="text-xs opacity-60">{email}</p>
+        <p className="text-sm opacity-60">{email}</p>
       </div>
     </div>
   )

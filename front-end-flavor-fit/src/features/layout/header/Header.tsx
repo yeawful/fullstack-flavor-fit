@@ -44,13 +44,11 @@ export function Header() {
 
         <Logout />
 
-        <div className="flex items-center gap-3">
-          <UserInfo
-            avatarUrl={'/images/avatar-placeholder.png'}
-            name={'Anonymous'}
-            email={user?.email || ''}
-          />
-        </div>
+        <UserInfo
+          avatarUrl={'/images/avatar-placeholder.png'}
+          name={'Anonymous'}
+          email={user?.email || ''}
+        />
       </div>
     </header>
   )

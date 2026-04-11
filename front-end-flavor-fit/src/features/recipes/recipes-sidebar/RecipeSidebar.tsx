@@ -3,26 +3,27 @@ import { InputLabel } from '@/shared/components/custom-ui/with-label/InputLabel'
 import { Search } from 'lucide-react'
 
 import { recipeSidebarMenuData } from './recipe-sidebar-menu.data'
+import { TRecipeFilters } from './recipe-sidebar-menu.types'
 
 interface Props {
-  filter: string
+  filters: TRecipeFilters
   searchTerm: string
   setSearchTerm: (term: string) => void
-  setFilter: (filter: string) => void
+  setFilters: (filters: Partial<TRecipeFilters>) => void
 }
 
 export function RecipeSidebar({
-  filter,
+  filters,
   searchTerm,
   setSearchTerm,
-  setFilter
+  setFilters
 }: Props) {
-  const setActiveFilter = (filter: string) => {
-    setFilter(filter)
+  const setActiveFilter = (key: keyof TRecipeFilters, filter: string) => {
+    setFilters({ [key]: filter })
   }
 
   return (
-    <div className="w-full max-w-64 space-y-6 rounded-2xl bg-white p-4">
+    <div className="w-full max-w-64 space-y-6 rounded-2xl bg-white px-3 py-4">
       <InputLabel
         Icon={Search}
         placeholder="Search by recipes"
@@ -33,7 +34,7 @@ export function RecipeSidebar({
 
       <SidebarMenuAccordion
         data={recipeSidebarMenuData}
-        activeValue={filter}
+        values={filters}
         onValueChange={setActiveFilter}
       />
     </div>

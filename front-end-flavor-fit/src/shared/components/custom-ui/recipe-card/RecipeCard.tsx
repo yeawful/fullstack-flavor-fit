@@ -1,3 +1,4 @@
+import { cn } from '@/shared/utils'
 import { EllipsisVertical } from 'lucide-react'
 import Link from 'next/link'
 
@@ -22,9 +23,14 @@ interface Props {
 
 export function RecipeCard({ recipe, size }: Props) {
   return (
-    <div className={recipeCardVariants({ size })}>
+    <div
+      className={cn(
+        recipeCardVariants({ size }),
+        'transition-shadow duration-300 group-hover:shadow-[0_3px_14px_rgba(0,0,0,.1)]'
+      )}
+    >
       <RecipeCardImage
-        image={'/images/test-recipe-image.png'}
+        image={recipe.image}
         title={recipe.title}
         size={size}
         slug={recipe.slug}
@@ -60,7 +66,7 @@ export function RecipeCard({ recipe, size }: Props) {
       <RecipeCardFooter
         difficultyLevel={recipe.difficulty}
         likes={recipe.likes}
-        views={156100}
+        views={recipe.views}
         size={size}
       />
     </div>

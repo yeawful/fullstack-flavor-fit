@@ -6,6 +6,7 @@ import {
   CarouselContent,
   CarouselItem
 } from '@/shared/components/ui/carousel'
+import { cn } from '@/shared/utils'
 import { LucideIcon } from 'lucide-react'
 
 import { GetRecipesQuery } from '@/__generated__/graphql'
@@ -28,11 +29,15 @@ export function RecipeCarousel({ Icon, title, size, recipes }: Props) {
       </HeadingWithIcon>
 
       <Carousel>
-        <CarouselContent>
+        <CarouselContent className="px-5 py-4">
           {recipes.map(recipe => (
             <CarouselItem
               key={recipe.slug}
-              className={size === 'sm' ? 'basis-[22%]' : 'basis-[26%]'}
+              className={cn(
+                'group transition-transform duration-300 will-change-transform hover:scale-[1.02]',
+                size === 'sm' ? 'basis-[22%]' : 'basis-[26%]',
+                size === 'sm' ? 'hover:-rotate-3' : 'hover:rotate-3'
+              )}
             >
               <RecipeCard
                 recipe={recipe}

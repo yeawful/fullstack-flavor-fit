@@ -428,6 +428,14 @@ export type RecipeModel = {
   views: Scalars['Int']['output'];
 };
 
+/** Sorting options for recipes */
+export const RecipeSort = {
+  New: 'NEW',
+  Popular: 'POPULAR',
+  Recommended: 'RECOMMENDED'
+} as const;
+
+export type RecipeSort = typeof RecipeSort[keyof typeof RecipeSort];
 export type RecipeStepInput = {
   description: Scalars['String']['input'];
   order: Scalars['Int']['input'];
@@ -462,7 +470,7 @@ export type RecipesQueryInput = {
   mealType?: InputMaybe<MealType>;
   page?: Scalars['Int']['input'];
   searchTerm?: InputMaybe<Scalars['String']['input']>;
-  sort?: InputMaybe<Scalars['String']['input']>;
+  sort?: InputMaybe<RecipeSort>;
   specialOccasion?: InputMaybe<SpecialOccasion>;
 };
 
