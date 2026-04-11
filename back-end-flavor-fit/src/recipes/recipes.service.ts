@@ -7,35 +7,38 @@ import { RecipesQueryInput } from './inputs/get-recipes-query.input'
 export class RecipesService {
 	constructor(private readonly prisma: PrismaService) {}
 
-	async getAll({ page, limit, searchTerm, sort }: RecipesQueryInput) {
+	async getAll({
+		page,
+		limit,
+		searchTerm,
+		sort,
+		mealType,
+		dietaryPreference,
+		healthGoal,
+		cuisine,
+		specialOccasion
+	}: RecipesQueryInput) {
 		const skip = (page - 1) * limit
 
 		return this.prisma.recipe.findMany({
 			skip,
 			take: limit,
+
 			where: {
+				...(mealType && { mealType }),
+				...(dietaryPreference && { dietaryPreference }),
+				...(healthGoal && { healthGoal }),
+				...(cuisine && { cuisine }),
+				...(specialOccasion && { specialOccasion }),
 				...(searchTerm && {
 					OR: [
-						{
-							title: {
-								contains: searchTerm,
-								mode: 'insensitive'
-							}
-						},
-						{
-							description: {
-								contains: searchTerm,
-								mode: 'insensitive'
-							}
-						},
+						{ title: { contains: searchTerm, mode: 'insensitive' } },
+						{ description: { contains: searchTerm, mode: 'insensitive' } },
 						{
 							recipeIngredients: {
 								some: {
 									ingredient: {
-										name: {
-											contains: searchTerm,
-											mode: 'insensitive'
-										}
+										name: { contains: searchTerm, mode: 'insensitive' }
 									}
 								}
 							}
@@ -48,9 +51,7 @@ export class RecipesService {
 
 			include: {
 				_count: {
-					select: {
-						likes: true
-					}
+					select: { likes: true }
 				}
 			}
 		})
@@ -59,19 +60,13 @@ export class RecipesService {
 	private getOrderBy(sort?: string) {
 		switch (sort) {
 			case 'recommended':
-				return {
-					likes: {
-						_count: Prisma.SortOrder.desc
-					}
-				}
+				return { likes: { _count: Prisma.SortOrder.desc } }
+
 			case 'popular':
-				return {
-					views: Prisma.SortOrder.desc
-				}
+				return { views: Prisma.SortOrder.desc }
+
 			default:
-				return {
-					createdAt: Prisma.SortOrder.desc
-				}
+				return { createdAt: Prisma.SortOrder.desc }
 		}
 	}
 
@@ -91,7 +86,7 @@ export class RecipesService {
 		})
 
 		if (!recipe) {
-			throw new NotFoundException(`Ingredient with slug ${slug} not found`)
+			throw new NotFoundException(`recipe with slug ${slug} not found`)
 		}
 
 		return recipe

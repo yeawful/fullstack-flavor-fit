@@ -1,19 +1,25 @@
 model Recipe {
   id String @id @default(cuid())
 
-  slug        String     @unique
-  title       String
-  description String
-  calories    Int
-  cookingTime Int        @map("cooking_time")
-  difficulty  Difficulty
+  slug              String            @unique
+  title             String
+  description       String
+  image             String            @default("")
+  calories          Int
+  cookingTime       Int               @map("cooking_time")
+  difficulty        Difficulty
+  mealType          MealType          @default(BREAKFAST)
+  dietaryPreference DietaryPreference @default(VEGETARIAN)
+  healthGoal        HealthGoal        @default(WEIGHT_LOSS)
+  cuisine           Cuisine           @default(RUSSIAN)
+  specialOccasion   SpecialOccasion   @default(HOLIDAY)
 
   views Int @default(0)
 
   author   User   @relation(fields: [authorId], references: [id])
   authorId String @map("author_id")
 
-  nutritionFacts NutritionFact?
+  nutritionFact NutritionFact?
 
   tags              RecipeTag[]
   recipeSteps       RecipeStep[]
@@ -55,6 +61,7 @@ model RecipeStep {
   order       Int
   title       String
   description String
+  image       String @default("")
 
   recipe   Recipe @relation(fields: [recipeId], references: [id])
   recipeId String @map("recipe_id")
@@ -99,4 +106,43 @@ enum Difficulty {
   EASY
   MEDIUM
   HARD
+}
+
+enum MealType {
+  BREAKFAST
+  LUNCH
+  DINNER
+  SNACK
+  DESSERT
+  DRINKS
+}
+
+enum DietaryPreference {
+  VEGETARIAN
+  LOW_CARB
+  GLUTEN_FREE
+  KETO
+  DAIRY_FREE
+}
+
+enum HealthGoal {
+  WEIGHT_LOSS
+  MUSCLE_GAIN
+  HEART_HEALTH
+}
+
+enum Cuisine {
+  RUSSIAN
+  ITALIAN
+  CHINESE
+  MEXICAN
+  INDIAN
+  FRENCH
+}
+
+enum SpecialOccasion {
+  HOLIDAY
+  BIRTHDAY
+  ANNIVERSARY
+  PARTY
 }

@@ -3,11 +3,12 @@ class PageConfig {
 
   readonly DASHBOARD = '/dashboard'
 
-  readonly MEAL_PLANS = this.DASHBOARD + '/meal_plans'
+  readonly MEAL_PLANS = this.DASHBOARD + '/meal-plans'
   readonly NUTRITION = this.DASHBOARD + '/nutrition'
   readonly ANALYTICS = this.DASHBOARD + '/analytics'
   readonly ORDER_GROCERIES = this.DASHBOARD + '/order-groceries'
   readonly RECIPES = this.DASHBOARD + '/recipes'
+  readonly RECIPE_DETAIL = (slug: string) => this.RECIPES + `/${slug}`
   readonly PROFILE = this.DASHBOARD + '/profile'
 
   private readonly AUTH = '/auth'

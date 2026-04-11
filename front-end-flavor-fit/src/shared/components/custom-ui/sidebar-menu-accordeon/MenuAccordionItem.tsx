@@ -26,7 +26,10 @@ export function MenuAccordionItem({ item, activeValue, onValueChange }: Props) {
         )}
       >
         <span className="flex items-center gap-2 font-semibold">
-          <item.icon size={22} />
+          <item.icon
+            size={22}
+            className="shrink-0"
+          />
           {item.name}
         </span>
 

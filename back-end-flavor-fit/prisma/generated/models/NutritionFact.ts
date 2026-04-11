@@ -320,7 +320,7 @@ export type NutritionFactCreateInput = {
   fiber: runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Date | string
   updatedAt?: Date | string
-  recipe: Prisma.RecipeCreateNestedOneWithoutNutritionFactsInput
+  recipe: Prisma.RecipeCreateNestedOneWithoutNutritionFactInput
 }
 
 export type NutritionFactUncheckedCreateInput = {
@@ -342,7 +342,7 @@ export type NutritionFactUpdateInput = {
   fiber?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  recipe?: Prisma.RecipeUpdateOneRequiredWithoutNutritionFactsNestedInput
+  recipe?: Prisma.RecipeUpdateOneRequiredWithoutNutritionFactNestedInput
 }
 
 export type NutritionFactUncheckedUpdateInput = {

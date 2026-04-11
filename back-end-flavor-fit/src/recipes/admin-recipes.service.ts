@@ -26,7 +26,7 @@ export class AdminRecipesService {
 		authorId: string,
 		{
 			recipeSteps,
-			nutritionFacts,
+			nutritionFact,
 			ingredients,
 			tags,
 			...data
@@ -40,9 +40,9 @@ export class AdminRecipesService {
 						id: authorId
 					}
 				},
-				...(!!nutritionFacts && {
+				...(!!nutritionFact && {
 					nutritionFacts: {
-						create: nutritionFacts
+						create: nutritionFact
 					}
 				}),
 				recipeSteps: {
@@ -78,7 +78,7 @@ export class AdminRecipesService {
 		id: string,
 		{
 			recipeSteps,
-			nutritionFacts,
+			nutritionFact,
 			ingredients,
 			tags,
 			...data
@@ -88,10 +88,10 @@ export class AdminRecipesService {
 			where: { id },
 			data: {
 				...data,
-				...(nutritionFacts && {
+				...(nutritionFact && {
 					nutritionFacts: {
-						create: nutritionFacts,
-						update: nutritionFacts
+						create: nutritionFact,
+						update: nutritionFact
 					}
 				}),
 				...(recipeSteps && {
