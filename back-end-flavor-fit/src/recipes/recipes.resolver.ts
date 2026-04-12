@@ -5,28 +5,29 @@ import { CurrentUser } from 'src/auth/decorators/current-user.decorator'
 import { AdminRecipesService } from './admin-recipes.service'
 import { RecipesQueryInput } from './inputs/get-recipes-query.input'
 import { RecipeCreateInput } from './inputs/recipe.input'
+import { GetAllRecipesModel } from './models/get-all-recipes.model'
 import { RecipeModel } from './models/recipe.model'
 import { RecipesService } from './recipes.service'
 
 @Resolver()
 export class RecipesResolver {
 	constructor(
-		private readonly recipeService: RecipesService,
+		private readonly recipesService: RecipesService,
 		private readonly adminRecipesService: AdminRecipesService
 	) {}
 
-	@Query(() => [RecipeModel], {
+	@Query(() => GetAllRecipesModel, {
 		name: 'recipes'
 	})
 	getAll(@Args('input') input: RecipesQueryInput) {
-		return this.recipeService.getAll(input)
+		return this.recipesService.getAll(input)
 	}
 
 	@Query(() => RecipeModel, {
 		name: 'recipeBySlug'
 	})
 	getBySlug(@Args('slug') slug: string) {
-		return this.recipeService.getBySlug(slug)
+		return this.recipesService.getBySlug(slug)
 	}
 
 	@Query(() => [RecipeModel], {
@@ -34,7 +35,7 @@ export class RecipesResolver {
 	})
 	@Auth(Role.ADMIN)
 	getAllAdmin(@Args('input') input: RecipesQueryInput) {
-		return this.recipeService.getAll(input)
+		return this.recipesService.getAll(input)
 	}
 
 	@Query(() => RecipeModel, {

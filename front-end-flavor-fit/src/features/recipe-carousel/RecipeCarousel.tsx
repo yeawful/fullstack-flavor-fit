@@ -3,22 +3,50 @@ import { RecipeCard } from '@/shared/components/custom-ui/recipe-card/RecipeCard
 import { TRecipeCardSize } from '@/shared/components/custom-ui/recipe-card/types/recipe-card.types'
 import {
   Carousel,
+  CarouselApi,
   CarouselContent,
   CarouselItem
 } from '@/shared/components/ui/carousel'
 import { cn } from '@/shared/utils'
 import { LucideIcon } from 'lucide-react'
+import { memo, useState } from 'react'
 
 import { GetRecipesQuery } from '@/__generated__/graphql'
+
+import { useCarouselInfiniteScroll } from '../recipes/hooks/useCarouselInfiniteScroll'
+import { RecipeCarouselLoadMoreLoader } from './RecipeCarouselLoadMoreLoader'
 
 interface Props {
   Icon: LucideIcon
   title: string
   size: TRecipeCardSize
-  recipes: GetRecipesQuery['recipes']
+  recipes: GetRecipesQuery['recipes']['items']
+  hasMore?: boolean
+  isFetchingMore?: boolean
+  onLoadMore?: () => void | Promise<void>
 }
 
-export function RecipeCarousel({ Icon, title, size, recipes }: Props) {
+export const RecipeCarousel = memo(function RecipeCarousel({
+  Icon,
+  title,
+  size,
+  recipes,
+  hasMore,
+  isFetchingMore = false,
+  onLoadMore
+}: Props) {
+  const [api, setApi] = useState<CarouselApi>()
+
+  useCarouselInfiniteScroll({
+    api,
+    hasMore,
+    isFetchingMore,
+    onLoadMore: async () => {
+      if (!onLoadMore) return
+      await onLoadMore()
+    }
+  })
+
   return (
     <div className="mb-6">
       <HeadingWithIcon
@@ -28,7 +56,7 @@ export function RecipeCarousel({ Icon, title, size, recipes }: Props) {
         {title}
       </HeadingWithIcon>
 
-      <Carousel>
+      <Carousel setApi={setApi}>
         <CarouselContent className="px-5 py-4">
           {recipes.map(recipe => (
             <CarouselItem
@@ -47,6 +75,12 @@ export function RecipeCarousel({ Icon, title, size, recipes }: Props) {
           ))}
         </CarouselContent>
       </Carousel>
+
+      {isFetchingMore && (
+        <div className="mt-4">
+          <RecipeCarouselLoadMoreLoader size={size} />
+        </div>
+      )}
     </div>
   )
-}
+})

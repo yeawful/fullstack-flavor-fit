@@ -1,4 +1,5 @@
 schema: './schema.json'
+
 documents:
   - 'src/**/*.graphql'
   - 'src/**/*.ts'

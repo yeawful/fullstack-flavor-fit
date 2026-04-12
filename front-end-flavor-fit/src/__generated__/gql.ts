@@ -24,7 +24,7 @@ type Documents = {
     "mutation VerifyEmail($token: String!) {\n  verifyEmail(token: $token)\n}": typeof types.VerifyEmailDocument,
     "query GetProfile {\n  me {\n    id\n    email\n    avatarUrl\n    profile {\n      fullName\n      gender\n      age\n      bio\n    }\n    measurements {\n      heightCm\n      weightKg\n      goalWeightKg\n      chestCm\n      waistCm\n      thighCm\n      armCm\n      activityLevel\n      nutritionGoal\n    }\n  }\n}": typeof types.GetProfileDocument,
     "mutation UpdateProfile($data: UserUpdateCustomInput!) {\n  updateProfile(data: $data) {\n    id\n    email\n    profile {\n      fullName\n      gender\n      age\n      bio\n    }\n    measurements {\n      heightCm\n      weightKg\n      goalWeightKg\n      chestCm\n      waistCm\n      thighCm\n      armCm\n      activityLevel\n      nutritionGoal\n    }\n  }\n}": typeof types.UpdateProfileDocument,
-    "query GetRecipes($input: RecipesQueryInput!) {\n  recipes(input: $input) {\n    image\n    title\n    description\n    slug\n    calories\n    cookingTime\n    difficulty\n    likes\n    views\n    mealType\n  }\n}": typeof types.GetRecipesDocument,
+    "query GetRecipes($input: RecipesQueryInput!) {\n  recipes(input: $input) {\n    hasMore\n    total\n    items {\n      image\n      title\n      description\n      slug\n      calories\n      cookingTime\n      difficulty\n      likes\n      views\n      mealType\n    }\n  }\n}": typeof types.GetRecipesDocument,
 };
 const documents: Documents = {
     "query GetNewTokens {\n  newTokens {\n    user {\n      id\n    }\n  }\n}": types.GetNewTokensDocument,
@@ -37,7 +37,7 @@ const documents: Documents = {
     "mutation VerifyEmail($token: String!) {\n  verifyEmail(token: $token)\n}": types.VerifyEmailDocument,
     "query GetProfile {\n  me {\n    id\n    email\n    avatarUrl\n    profile {\n      fullName\n      gender\n      age\n      bio\n    }\n    measurements {\n      heightCm\n      weightKg\n      goalWeightKg\n      chestCm\n      waistCm\n      thighCm\n      armCm\n      activityLevel\n      nutritionGoal\n    }\n  }\n}": types.GetProfileDocument,
     "mutation UpdateProfile($data: UserUpdateCustomInput!) {\n  updateProfile(data: $data) {\n    id\n    email\n    profile {\n      fullName\n      gender\n      age\n      bio\n    }\n    measurements {\n      heightCm\n      weightKg\n      goalWeightKg\n      chestCm\n      waistCm\n      thighCm\n      armCm\n      activityLevel\n      nutritionGoal\n    }\n  }\n}": types.UpdateProfileDocument,
-    "query GetRecipes($input: RecipesQueryInput!) {\n  recipes(input: $input) {\n    image\n    title\n    description\n    slug\n    calories\n    cookingTime\n    difficulty\n    likes\n    views\n    mealType\n  }\n}": types.GetRecipesDocument,
+    "query GetRecipes($input: RecipesQueryInput!) {\n  recipes(input: $input) {\n    hasMore\n    total\n    items {\n      image\n      title\n      description\n      slug\n      calories\n      cookingTime\n      difficulty\n      likes\n      views\n      mealType\n    }\n  }\n}": types.GetRecipesDocument,
 };
 
 /**
@@ -97,7 +97,7 @@ export function graphql(source: "mutation UpdateProfile($data: UserUpdateCustomI
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "query GetRecipes($input: RecipesQueryInput!) {\n  recipes(input: $input) {\n    image\n    title\n    description\n    slug\n    calories\n    cookingTime\n    difficulty\n    likes\n    views\n    mealType\n  }\n}"): (typeof documents)["query GetRecipes($input: RecipesQueryInput!) {\n  recipes(input: $input) {\n    image\n    title\n    description\n    slug\n    calories\n    cookingTime\n    difficulty\n    likes\n    views\n    mealType\n  }\n}"];
+export function graphql(source: "query GetRecipes($input: RecipesQueryInput!) {\n  recipes(input: $input) {\n    hasMore\n    total\n    items {\n      image\n      title\n      description\n      slug\n      calories\n      cookingTime\n      difficulty\n      likes\n      views\n      mealType\n    }\n  }\n}"): (typeof documents)["query GetRecipes($input: RecipesQueryInput!) {\n  recipes(input: $input) {\n    hasMore\n    total\n    items {\n      image\n      title\n      description\n      slug\n      calories\n      cookingTime\n      difficulty\n      likes\n      views\n      mealType\n    }\n  }\n}"];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};

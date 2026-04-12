@@ -20,41 +20,51 @@ export class RecipesService {
 	}: RecipesQueryInput) {
 		const skip = (page - 1) * limit
 
-		return this.prisma.recipe.findMany({
-			skip,
-			take: limit,
-
-			where: {
-				...(mealType && { mealType }),
-				...(dietaryPreference && { dietaryPreference }),
-				...(healthGoal && { healthGoal }),
-				...(cuisine && { cuisine }),
-				...(specialOccasion && { specialOccasion }),
-				...(searchTerm && {
-					OR: [
-						{ title: { contains: searchTerm, mode: 'insensitive' } },
-						{ description: { contains: searchTerm, mode: 'insensitive' } },
-						{
-							recipeIngredients: {
-								some: {
-									ingredient: {
-										name: { contains: searchTerm, mode: 'insensitive' }
-									}
+		const where = {
+			...(mealType && { mealType }),
+			...(dietaryPreference && { dietaryPreference }),
+			...(healthGoal && { healthGoal }),
+			...(cuisine && { cuisine }),
+			...(specialOccasion && { specialOccasion }),
+			...(searchTerm && {
+				OR: [
+					{ title: { contains: searchTerm, mode: 'insensitive' } },
+					{ description: { contains: searchTerm, mode: 'insensitive' } },
+					{
+						recipeIngredients: {
+							some: {
+								ingredient: {
+									name: { contains: searchTerm, mode: 'insensitive' }
 								}
 							}
 						}
-					]
-				})
-			},
+					}
+				]
+			})
+		} satisfies Prisma.RecipeWhereInput
 
-			orderBy: this.getOrderBy(sort),
-
-			include: {
-				_count: {
-					select: { likes: true }
+		const [items, total] = await Promise.all([
+			this.prisma.recipe.findMany({
+				skip,
+				take: limit,
+				where,
+				orderBy: this.getOrderBy(sort),
+				include: {
+					_count: {
+						select: {
+							likes: true
+						}
+					}
 				}
-			}
-		})
+			}),
+			this.prisma.recipe.count({ where })
+		])
+
+		return {
+			items,
+			total,
+			hasMore: skip + items.length < total
+		}
 	}
 
 	private getOrderBy(sort?: string) {
