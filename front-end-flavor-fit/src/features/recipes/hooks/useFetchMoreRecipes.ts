@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 import {
   GetRecipesQuery,
@@ -17,8 +17,6 @@ interface Props {
       }
     ) => GetRecipesQuery
   }) => Promise<unknown>
-  page: number
-  setPage: (page: number) => void
   input: RecipesQueryInput
   sort: RecipeSort
   hasMore?: boolean
@@ -26,18 +24,21 @@ interface Props {
 
 export function useFetchMoreRecipes({
   fetchMore,
-  page,
-  setPage,
   input,
   sort,
   hasMore
 }: Props) {
   const [isFetchingMore, setIsFetchingMore] = useState(false)
+  const pageRef = useRef(1)
+
+  useEffect(() => {
+    pageRef.current = 1
+  }, [input, sort])
 
   const loadMore = useCallback(async () => {
     if (isFetchingMore || !hasMore) return
 
-    const nextPage = page + 1
+    const nextPage = pageRef.current + 1
     setIsFetchingMore(true)
 
     try {
@@ -52,8 +53,6 @@ export function useFetchMoreRecipes({
         updateQuery: (prev, { fetchMoreResult }) => {
           if (!fetchMoreResult) return prev
 
-          setPage(nextPage)
-
           return {
             ...prev,
             recipes: {
@@ -63,10 +62,12 @@ export function useFetchMoreRecipes({
           }
         }
       })
+
+      pageRef.current = nextPage
     } finally {
       setIsFetchingMore(false)
     }
-  }, [fetchMore, hasMore, input, isFetchingMore, page, setPage, sort])
+  }, [fetchMore, hasMore, input, isFetchingMore, sort])
 
   return { loadMore, isFetchingMore }
 }

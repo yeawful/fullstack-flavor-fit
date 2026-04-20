@@ -6,7 +6,7 @@ model Ingredient {
   content String
   price   Decimal
 
-  recipesIngridient RecipeIngredient[]
+  recipesIngredients RecipeIngredient[]
 
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")

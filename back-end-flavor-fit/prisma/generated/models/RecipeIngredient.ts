@@ -302,7 +302,7 @@ export type RecipeIngredientCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   recipe: Prisma.RecipeCreateNestedOneWithoutRecipeIngredientsInput
-  ingredient: Prisma.IngredientCreateNestedOneWithoutRecipesIngridientInput
+  ingredient: Prisma.IngredientCreateNestedOneWithoutRecipesIngredientsInput
   orderItems?: Prisma.OrderItemCreateNestedManyWithoutRecipeIngredientInput
 }
 
@@ -324,7 +324,7 @@ export type RecipeIngredientUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   recipe?: Prisma.RecipeUpdateOneRequiredWithoutRecipeIngredientsNestedInput
-  ingredient?: Prisma.IngredientUpdateOneRequiredWithoutRecipesIngridientNestedInput
+  ingredient?: Prisma.IngredientUpdateOneRequiredWithoutRecipesIngredientsNestedInput
   orderItems?: Prisma.OrderItemUpdateManyWithoutRecipeIngredientNestedInput
 }
 
@@ -593,7 +593,7 @@ export type RecipeIngredientCreateWithoutOrderItemsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   recipe: Prisma.RecipeCreateNestedOneWithoutRecipeIngredientsInput
-  ingredient: Prisma.IngredientCreateNestedOneWithoutRecipesIngridientInput
+  ingredient: Prisma.IngredientCreateNestedOneWithoutRecipesIngredientsInput
 }
 
 export type RecipeIngredientUncheckedCreateWithoutOrderItemsInput = {
@@ -629,7 +629,7 @@ export type RecipeIngredientUpdateWithoutOrderItemsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   recipe?: Prisma.RecipeUpdateOneRequiredWithoutRecipeIngredientsNestedInput
-  ingredient?: Prisma.IngredientUpdateOneRequiredWithoutRecipesIngridientNestedInput
+  ingredient?: Prisma.IngredientUpdateOneRequiredWithoutRecipesIngredientsNestedInput
 }
 
 export type RecipeIngredientUncheckedUpdateWithoutOrderItemsInput = {
@@ -648,7 +648,7 @@ export type RecipeIngredientCreateWithoutRecipeInput = {
   unit?: $Enums.Unit
   createdAt?: Date | string
   updatedAt?: Date | string
-  ingredient: Prisma.IngredientCreateNestedOneWithoutRecipesIngridientInput
+  ingredient: Prisma.IngredientCreateNestedOneWithoutRecipesIngredientsInput
   orderItems?: Prisma.OrderItemCreateNestedManyWithoutRecipeIngredientInput
 }
 
@@ -741,7 +741,7 @@ export type RecipeIngredientUpdateWithoutRecipeInput = {
   unit?: Prisma.EnumUnitFieldUpdateOperationsInput | $Enums.Unit
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  ingredient?: Prisma.IngredientUpdateOneRequiredWithoutRecipesIngridientNestedInput
+  ingredient?: Prisma.IngredientUpdateOneRequiredWithoutRecipesIngredientsNestedInput
   orderItems?: Prisma.OrderItemUpdateManyWithoutRecipeIngredientNestedInput
 }
 

@@ -43,30 +43,40 @@ export const recommendedRecipes: ISeedRecipe[] = [
 		recipeIngredients: [
 			{
 				name: 'Banana',
+				icon: 'banana-1.svg',
+				priceUsd: 0.35,
 				quantity: '1',
 				unit: Unit.PIECE,
 				defaultUnit: Unit.PIECE
 			},
 			{
 				name: 'Spinach',
+				icon: 'spinach-1.svg',
+				priceUsd: 0.8,
 				quantity: '40',
 				unit: Unit.GRAM,
 				defaultUnit: Unit.GRAM
 			},
 			{
 				name: 'Greek Yogurt',
+				icon: 'berry-yogurt-cup-1.svg',
+				priceUsd: 1.2,
 				quantity: '120',
 				unit: Unit.GRAM,
 				defaultUnit: Unit.GRAM
 			},
 			{
 				name: 'Granola',
+				icon: 'porridge-cup-1.svg',
+				priceUsd: 0.7,
 				quantity: '30',
 				unit: Unit.GRAM,
 				defaultUnit: Unit.GRAM
 			},
 			{
 				name: 'Coconut Flakes',
+				icon: 'coconut-1.svg',
+				priceUsd: 0.45,
 				quantity: '10',
 				unit: Unit.GRAM,
 				defaultUnit: Unit.GRAM
@@ -129,30 +139,40 @@ export const recommendedRecipes: ISeedRecipe[] = [
 		recipeIngredients: [
 			{
 				name: 'Scallops',
+				icon: 'mussel-1.svg',
+				priceUsd: 5.8,
 				quantity: '200',
 				unit: Unit.GRAM,
 				defaultUnit: Unit.GRAM
 			},
 			{
 				name: 'White Beans',
+				icon: 'red-beans-1.svg',
+				priceUsd: 0.9,
 				quantity: '150',
 				unit: Unit.GRAM,
 				defaultUnit: Unit.GRAM
 			},
 			{
 				name: 'Spinach',
+				icon: 'spinach-1.svg',
+				priceUsd: 1.2,
 				quantity: '70',
 				unit: Unit.GRAM,
 				defaultUnit: Unit.GRAM
 			},
 			{
 				name: 'Olive Oil',
+				icon: 'olive-oil-bottle-1.svg',
+				priceUsd: 0.35,
 				quantity: '10',
 				unit: Unit.MILLILITER,
 				defaultUnit: Unit.MILLILITER
 			},
 			{
 				name: 'Garlic',
+				icon: 'garlic-1.svg',
+				priceUsd: 0.2,
 				quantity: '2',
 				unit: Unit.CLOVES,
 				defaultUnit: Unit.CLOVES
@@ -215,25 +235,40 @@ export const recommendedRecipes: ISeedRecipe[] = [
 		recipeIngredients: [
 			{
 				name: 'Whole Grain Bread',
+				icon: 'bread-loaf-1.svg',
+				priceUsd: 0.5,
 				quantity: '2',
 				unit: Unit.PIECE,
 				defaultUnit: Unit.PIECE
 			},
-			{ name: 'Tofu', quantity: '80', unit: Unit.GRAM, defaultUnit: Unit.GRAM },
+			{
+				name: 'Tofu',
+				icon: 'tofu-fried-1.svg',
+				priceUsd: 1.1,
+				quantity: '80',
+				unit: Unit.GRAM,
+				defaultUnit: Unit.GRAM
+			},
 			{
 				name: 'Avocado',
+				icon: 'avocado-1.svg',
+				priceUsd: 0.9,
 				quantity: '0.5',
 				unit: Unit.PIECE,
 				defaultUnit: Unit.PIECE
 			},
 			{
 				name: 'Tomato',
+				icon: 'tomato-1.svg',
+				priceUsd: 0.45,
 				quantity: '0.5',
 				unit: Unit.PIECE,
 				defaultUnit: Unit.PIECE
 			},
 			{
 				name: 'Lettuce',
+				icon: 'lettuce-head-1.svg',
+				priceUsd: 0.55,
 				quantity: '20',
 				unit: Unit.GRAM,
 				defaultUnit: Unit.GRAM
@@ -296,25 +331,40 @@ export const recommendedRecipes: ISeedRecipe[] = [
 		recipeIngredients: [
 			{
 				name: 'Black Beans',
+				icon: 'red-beans-1.svg',
+				priceUsd: 1.0,
 				quantity: '180',
 				unit: Unit.GRAM,
 				defaultUnit: Unit.GRAM
 			},
-			{ name: 'Corn', quantity: '80', unit: Unit.GRAM, defaultUnit: Unit.GRAM },
+			{
+				name: 'Corn',
+				icon: 'corn-1.svg',
+				priceUsd: 0.6,
+				quantity: '80',
+				unit: Unit.GRAM,
+				defaultUnit: Unit.GRAM
+			},
 			{
 				name: 'Tomato',
+				icon: 'tomato-1.svg',
+				priceUsd: 0.8,
 				quantity: '1',
 				unit: Unit.PIECE,
 				defaultUnit: Unit.PIECE
 			},
 			{
 				name: 'Red Onion',
+				icon: 'onion-red-half-1.svg',
+				priceUsd: 0.3,
 				quantity: '0.5',
 				unit: Unit.PIECE,
 				defaultUnit: Unit.PIECE
 			},
 			{
 				name: 'Olive Oil',
+				icon: 'olive-oil-bottle-1.svg',
+				priceUsd: 0.35,
 				quantity: '10',
 				unit: Unit.MILLILITER,
 				defaultUnit: Unit.MILLILITER
@@ -377,24 +427,32 @@ export const recommendedRecipes: ISeedRecipe[] = [
 		recipeIngredients: [
 			{
 				name: 'Greek Yogurt',
+				icon: 'berry-yogurt-cup-1.svg',
+				priceUsd: 1.8,
 				quantity: '180',
 				unit: Unit.GRAM,
 				defaultUnit: Unit.GRAM
 			},
 			{
 				name: 'Blueberries',
+				icon: 'blueberry-1.svg',
+				priceUsd: 1.4,
 				quantity: '60',
 				unit: Unit.GRAM,
 				defaultUnit: Unit.GRAM
 			},
 			{
 				name: 'Strawberries',
+				icon: 'strawberry-1.svg',
+				priceUsd: 1.0,
 				quantity: '60',
 				unit: Unit.GRAM,
 				defaultUnit: Unit.GRAM
 			},
 			{
 				name: 'Granola',
+				icon: 'porridge-cup-1.svg',
+				priceUsd: 0.8,
 				quantity: '35',
 				unit: Unit.GRAM,
 				defaultUnit: Unit.GRAM
@@ -457,24 +515,32 @@ export const recommendedRecipes: ISeedRecipe[] = [
 		recipeIngredients: [
 			{
 				name: 'Bread',
+				icon: 'bread-loaf-1.svg',
+				priceUsd: 0.45,
 				quantity: '2',
 				unit: Unit.PIECE,
 				defaultUnit: Unit.PIECE
 			},
 			{
 				name: 'Chickpeas',
+				icon: 'peas-1.svg',
+				priceUsd: 0.9,
 				quantity: '100',
 				unit: Unit.GRAM,
 				defaultUnit: Unit.GRAM
 			},
 			{
 				name: 'Avocado',
+				icon: 'avocado-1.svg',
+				priceUsd: 0.9,
 				quantity: '0.5',
 				unit: Unit.PIECE,
 				defaultUnit: Unit.PIECE
 			},
 			{
 				name: 'Lemon Juice',
+				icon: 'lemon-1.svg',
+				priceUsd: 0.25,
 				quantity: '1',
 				unit: Unit.TABLESPOON,
 				defaultUnit: Unit.TABLESPOON
@@ -540,24 +606,32 @@ export const popularRecipes: ISeedRecipe[] = [
 		recipeIngredients: [
 			{
 				name: 'Eggs',
+				icon: 'egg-cracked-1.svg',
+				priceUsd: 1.2,
 				quantity: '4',
 				unit: Unit.PIECE,
 				defaultUnit: Unit.PIECE
 			},
 			{
 				name: 'Mushrooms',
+				icon: 'mushroom-mix-1.svg',
+				priceUsd: 1.5,
 				quantity: '120',
 				unit: Unit.GRAM,
 				defaultUnit: Unit.GRAM
 			},
 			{
 				name: 'Spinach',
+				icon: 'spinach-1.svg',
+				priceUsd: 1.0,
 				quantity: '60',
 				unit: Unit.GRAM,
 				defaultUnit: Unit.GRAM
 			},
 			{
 				name: 'Salmon',
+				icon: 'salmon-fillet-1.svg',
+				priceUsd: 3.4,
 				quantity: '80',
 				unit: Unit.GRAM,
 				defaultUnit: Unit.GRAM
@@ -620,13 +694,24 @@ export const popularRecipes: ISeedRecipe[] = [
 		recipeIngredients: [
 			{
 				name: 'Tortilla',
+				icon: 'tortilla-1.svg',
+				priceUsd: 0.4,
 				quantity: '1',
 				unit: Unit.PIECE,
 				defaultUnit: Unit.PIECE
 			},
-			{ name: 'Egg', quantity: '2', unit: Unit.PIECE, defaultUnit: Unit.PIECE },
+			{
+				name: 'Egg',
+				icon: 'egg-cracked-1.svg',
+				priceUsd: 0.6,
+				quantity: '2',
+				unit: Unit.PIECE,
+				defaultUnit: Unit.PIECE
+			},
 			{
 				name: 'Spinach',
+				icon: 'spinach-1.svg',
+				priceUsd: 0.5,
 				quantity: '30',
 				unit: Unit.GRAM,
 				defaultUnit: Unit.GRAM
@@ -689,24 +774,32 @@ export const popularRecipes: ISeedRecipe[] = [
 		recipeIngredients: [
 			{
 				name: 'Spinach',
+				icon: 'spinach-1.svg',
+				priceUsd: 1.1,
 				quantity: '70',
 				unit: Unit.GRAM,
 				defaultUnit: Unit.GRAM
 			},
 			{
 				name: 'Strawberries',
+				icon: 'strawberry-1.svg',
+				priceUsd: 1.6,
 				quantity: '100',
 				unit: Unit.GRAM,
 				defaultUnit: Unit.GRAM
 			},
 			{
 				name: 'Walnuts',
+				icon: 'peanut-1.svg',
+				priceUsd: 0.9,
 				quantity: '20',
 				unit: Unit.GRAM,
 				defaultUnit: Unit.GRAM
 			},
 			{
 				name: 'Olive Oil',
+				icon: 'olive-oil-bottle-1.svg',
+				priceUsd: 0.35,
 				quantity: '10',
 				unit: Unit.MILLILITER,
 				defaultUnit: Unit.MILLILITER
@@ -769,23 +862,36 @@ export const popularRecipes: ISeedRecipe[] = [
 		recipeIngredients: [
 			{
 				name: 'Bread',
+				icon: 'bread-loaf-1.svg',
+				priceUsd: 0.45,
 				quantity: '2',
 				unit: Unit.PIECE,
 				defaultUnit: Unit.PIECE
 			},
 			{
 				name: 'Cottage Cheese',
+				icon: 'milk-carton-1.svg',
+				priceUsd: 1.3,
 				quantity: '100',
 				unit: Unit.GRAM,
 				defaultUnit: Unit.GRAM
 			},
 			{
 				name: 'Avocado',
+				icon: 'avocado-1.svg',
+				priceUsd: 0.9,
 				quantity: '0.5',
 				unit: Unit.PIECE,
 				defaultUnit: Unit.PIECE
 			},
-			{ name: 'Egg', quantity: '1', unit: Unit.PIECE, defaultUnit: Unit.PIECE }
+			{
+				name: 'Egg',
+				icon: 'egg-cracked-1.svg',
+				priceUsd: 0.3,
+				quantity: '1',
+				unit: Unit.PIECE,
+				defaultUnit: Unit.PIECE
+			}
 		],
 		recipeSteps: [
 			{
@@ -844,24 +950,32 @@ export const popularRecipes: ISeedRecipe[] = [
 		recipeIngredients: [
 			{
 				name: 'Salmon',
+				icon: 'salmon-fillet-1.svg',
+				priceUsd: 6.2,
 				quantity: '160',
 				unit: Unit.GRAM,
 				defaultUnit: Unit.GRAM
 			},
 			{
 				name: 'Sweet Potato',
+				icon: 'sweet-potato-1.svg',
+				priceUsd: 0.9,
 				quantity: '150',
 				unit: Unit.GRAM,
 				defaultUnit: Unit.GRAM
 			},
 			{
 				name: 'Brown Rice',
+				icon: 'porridge-cup-1.svg',
+				priceUsd: 0.7,
 				quantity: '120',
 				unit: Unit.GRAM,
 				defaultUnit: Unit.GRAM
 			},
 			{
 				name: 'Broccoli',
+				icon: 'broccoli-1.svg',
+				priceUsd: 0.95,
 				quantity: '70',
 				unit: Unit.GRAM,
 				defaultUnit: Unit.GRAM
@@ -924,24 +1038,32 @@ export const popularRecipes: ISeedRecipe[] = [
 		recipeIngredients: [
 			{
 				name: 'Tortilla',
+				icon: 'tortilla-1.svg',
+				priceUsd: 0.4,
 				quantity: '1',
 				unit: Unit.PIECE,
 				defaultUnit: Unit.PIECE
 			},
 			{
 				name: 'Turkey',
+				icon: 'ham-1.svg',
+				priceUsd: 1.9,
 				quantity: '90',
 				unit: Unit.GRAM,
 				defaultUnit: Unit.GRAM
 			},
 			{
 				name: 'Hummus',
+				icon: 'porridge-cup-1.svg',
+				priceUsd: 0.8,
 				quantity: '2',
 				unit: Unit.TABLESPOON,
 				defaultUnit: Unit.TABLESPOON
 			},
 			{
 				name: 'Lettuce',
+				icon: 'lettuce-head-1.svg',
+				priceUsd: 0.55,
 				quantity: '20',
 				unit: Unit.GRAM,
 				defaultUnit: Unit.GRAM
@@ -1004,14 +1126,32 @@ export const popularRecipes: ISeedRecipe[] = [
 		recipeIngredients: [
 			{
 				name: 'Cauliflower Rice',
+				icon: 'cauliflower-1.svg',
+				priceUsd: 1.4,
 				quantity: '180',
 				unit: Unit.GRAM,
 				defaultUnit: Unit.GRAM
 			},
-			{ name: 'Egg', quantity: '2', unit: Unit.PIECE, defaultUnit: Unit.PIECE },
-			{ name: 'Peas', quantity: '40', unit: Unit.GRAM, defaultUnit: Unit.GRAM },
+			{
+				name: 'Egg',
+				icon: 'egg-cracked-1.svg',
+				priceUsd: 0.6,
+				quantity: '2',
+				unit: Unit.PIECE,
+				defaultUnit: Unit.PIECE
+			},
+			{
+				name: 'Peas',
+				icon: 'peas-1.svg',
+				priceUsd: 0.45,
+				quantity: '40',
+				unit: Unit.GRAM,
+				defaultUnit: Unit.GRAM
+			},
 			{
 				name: 'Green Onion',
+				icon: 'green-onion-1.svg',
+				priceUsd: 0.25,
 				quantity: '15',
 				unit: Unit.GRAM,
 				defaultUnit: Unit.GRAM

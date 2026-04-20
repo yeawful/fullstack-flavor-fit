@@ -35,6 +35,8 @@ export interface ISeedRecipe {
 		quantity: string
 		unit: Unit
 		defaultUnit: Unit
+		icon: string
+		priceUsd: number
 	}[]
 	recipeSteps: {
 		order: number
