@@ -2,7 +2,7 @@
 
 import { useQuery } from '@apollo/client/react'
 import { parseAsStringEnum, useQueryState, useQueryStates } from 'nuqs'
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 
 import { useDebounce } from '@/shared/hooks/useDebounce'
 
@@ -36,6 +36,9 @@ export function RecipesDashboard() {
     specialOccasion: parseAsStringEnum(Object.values(SpecialOccasion))
   })
 
+  const [recommendedPage, setRecommendedPage] = useState(1)
+  const [popularPage, setPopularPage] = useState(1)
+
   const debouncedSearchTerm = useDebounce(searchTerm, 400)
 
   const commonInput: RecipesQueryInput = useMemo(
@@ -46,21 +49,21 @@ export function RecipesDashboard() {
     [filters, debouncedSearchTerm]
   )
 
-  const recommendedInput: RecipesQueryInput = useMemo(
-    () => ({
-      ...commonInput,
-      limit: 4
-    }),
-    [commonInput]
-  )
+  // const recommendedInput: RecipesQueryInput = useMemo(
+  //   () => ({
+  //     ...commonInput,
+  //     limit: 4
+  //   }),
+  //   [commonInput]
+  // )
 
-  const popularInput: RecipesQueryInput = useMemo(
-    () => ({
-      ...commonInput,
-      limit: 5
-    }),
-    [commonInput]
-  )
+  // const popularInput: RecipesQueryInput = useMemo(
+  //   () => ({
+  //     ...commonInput,
+  //     limit: 5
+  //   }),
+  //   [commonInput]
+  // )
 
   const {
     data: recommendedRecipes,
@@ -69,8 +72,9 @@ export function RecipesDashboard() {
   } = useQuery(GetRecipesDocument, {
     variables: {
       input: {
-        ...recommendedInput,
+        ...commonInput,
         page: 1,
+        limit: 4,
         sort: RecipeSort.Recommended
       }
     },
@@ -84,8 +88,9 @@ export function RecipesDashboard() {
   } = useQuery(GetRecipesDocument, {
     variables: {
       input: {
-        ...popularInput,
+        ...commonInput,
         page: 1,
+        limit: 5,
         sort: RecipeSort.Popular
       }
     },
@@ -94,14 +99,24 @@ export function RecipesDashboard() {
 
   const recommendedPagination = useFetchMoreRecipes({
     fetchMore: fetchMoreRecommended,
-    input: recommendedInput,
+    page: recommendedPage,
+    setPage: setRecommendedPage,
+    input: {
+      ...commonInput,
+      limit: 4
+    },
     sort: RecipeSort.Recommended,
     hasMore: recommendedRecipes?.recipes.hasMore
   })
 
   const popularPagination = useFetchMoreRecipes({
     fetchMore: fetchMorePopular,
-    input: popularInput,
+    page: popularPage,
+    setPage: setPopularPage,
+    input: {
+      ...commonInput,
+      limit: 5
+    },
     sort: RecipeSort.Popular,
     hasMore: popularRecipes?.recipes.hasMore
   })

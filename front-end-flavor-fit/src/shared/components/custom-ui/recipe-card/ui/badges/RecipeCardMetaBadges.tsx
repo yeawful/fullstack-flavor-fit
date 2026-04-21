@@ -6,7 +6,7 @@ import { TRecipeCardSize } from '../../types/recipe-card.types'
 import { RecipeCardBadge } from './RecipeCardBadge'
 
 interface Props {
-  recipe: GetRecipesQuery['recipes'][number]
+  recipe: GetRecipesQuery['recipes']['items'][0]
   size: TRecipeCardSize
 }
 

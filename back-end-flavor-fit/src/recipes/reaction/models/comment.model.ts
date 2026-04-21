@@ -1,4 +1,5 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql'
+import { UserModel } from 'src/users/models/user.model'
 
 @ObjectType()
 export class CommentModel {
@@ -13,4 +14,7 @@ export class CommentModel {
 
 	@Field(() => Date, { nullable: false })
 	updatedAt!: Date
+
+	@Field(() => UserModel, { nullable: false })
+	author!: UserModel
 }

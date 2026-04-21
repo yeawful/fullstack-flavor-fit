@@ -17,7 +17,7 @@ import { RecipeCardImage } from './ui/RecipeCardImage'
 import { RecipeCardMetaBadges } from './ui/badges/RecipeCardMetaBadges'
 
 interface Props {
-  recipe: GetRecipesQuery['recipes'][0]
+  recipe: GetRecipesQuery['recipes']['items'][0]
   size?: TRecipeCardSize
 }
 

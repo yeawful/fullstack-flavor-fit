@@ -1,6 +1,7 @@
 import { Field, ID, Int, ObjectType } from '@nestjs/graphql'
 
 import { UserModel } from 'src/users/models/user.model'
+import { CommentModel } from '../reaction/models/comment.model'
 import {
 	Cuisine,
 	DietaryPreference,
@@ -85,6 +86,6 @@ export class RecipeModel {
 	@Field(() => Int, { nullable: true })
 	likes?: number
 
-	// @Field(() => [Comment], { nullable: true })
-	// comments?: Array<Comment>
+	@Field(() => [CommentModel], { nullable: true })
+	comments?: Array<CommentModel>
 }

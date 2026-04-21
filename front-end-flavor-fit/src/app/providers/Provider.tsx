@@ -15,7 +15,7 @@ export function Provider({ children }: { children: React.ReactNode }) {
         {children}
         <Toaster
           position="top-center"
-          containerClassName="mt-16 font-mono text-sm"
+          containerClassName="mt-16 font-mono font-medium"
         />
       </ApolloProvider>
     </NuqsAdapter>

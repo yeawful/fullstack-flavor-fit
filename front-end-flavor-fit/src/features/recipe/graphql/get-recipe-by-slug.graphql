@@ -1,5 +1,6 @@
 query GetRecipeBySlug($slug: String!) {
   recipeBySlug(slug: $slug) {
+    id
     image
     title
     description
@@ -8,6 +9,8 @@ query GetRecipeBySlug($slug: String!) {
     cookingTime
     difficulty
     mealType
+    likes
+    views
     author {
       avatarUrl
       profile {
@@ -21,12 +24,14 @@ query GetRecipeBySlug($slug: String!) {
       quantity
       unit
       ingredient {
+        id
         name
         iconUrl
         price
       }
     }
     recipeSteps {
+      id
       title
       description
       image
@@ -36,6 +41,17 @@ query GetRecipeBySlug($slug: String!) {
       fats
       proteins
       fiber
+    }
+    comments {
+      id
+      content
+      createdAt
+      author {
+        avatarUrl
+        profile {
+          fullName
+        }
+      }
     }
   }
 }

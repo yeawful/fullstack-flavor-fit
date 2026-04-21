@@ -6,10 +6,10 @@ import { TRecipeCardSize } from '../../types/recipe-card.types'
 
 interface Props extends PropsWithChildren {
   Icon?: LucideIcon
-  size: TRecipeCardSize
+  size?: TRecipeCardSize
 }
 
-export function RecipeCardBadge({ Icon, size, children }: Props) {
+export function RecipeCardBadge({ Icon, size = 'default', children }: Props) {
   return (
     <div className={recipeCardBadgeVariants({ size })}>
       {Icon && <Icon className={size === 'sm' ? 'size-3.5' : 'size-4'} />}
