@@ -60,7 +60,8 @@ export const recipeCardFooterTextVariants = cva(
     variants: {
       size: {
         default: 'text-xs',
-        sm: 'text-xs'
+        sm: 'text-xs',
+        lg: 'text-sm'
       }
     },
     defaultVariants: {

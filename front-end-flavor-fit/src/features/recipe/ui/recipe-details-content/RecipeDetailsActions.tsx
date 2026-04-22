@@ -1,9 +1,7 @@
 import { Heart, Share, ShoppingCart } from 'lucide-react'
 import toast from 'react-hot-toast'
 
-interface Props {}
-
-export function RecipeDetailsActions({}: Props) {
+export function RecipeDetailsActions() {
   return (
     <div className="flex items-center gap-3 pt-1">
       <button

@@ -57,6 +57,13 @@ export class ReactionService {
 						id: input.recipeId
 					}
 				}
+			},
+			include: {
+				author: {
+					include: {
+						profile: true
+					}
+				}
 			}
 		})
 	}

@@ -4,7 +4,6 @@ import Image from 'next/image'
 
 import { GetRecipeBySlugQuery } from '@/__generated__/graphql'
 
-import { RecipeDetailsBreadcrumbs } from '../RecipeDetailsBreadcrumbs'
 import { RecipeDetailSteps } from '../recipe-details-steps/RecipeDetailSteps'
 import { RecipeDetailsInformation } from './RecipeDetailsInformation'
 
@@ -15,18 +14,16 @@ interface Props {
 export function RecipeDetailsContent({ recipe }: Props) {
   return (
     <div>
-      <RecipeDetailsBreadcrumbs title={recipe?.title} />
-      <div className="rounded-xl bg-white p-5">
+      <div className="rounded-2xl bg-white p-5">
         <div className="grid grid-cols-2 gap-5">
-          <Image
-            src={recipe?.image || ''}
-            alt={recipe?.title || ''}
-            width={800}
-            height={400}
-            className="h-auto w-full rounded-xl object-cover"
-            draggable={false}
-            priority
-          />
+          <div className="relative h-86.5 w-full">
+            <Image
+              src={recipe?.image || ''}
+              alt={recipe?.title || ''}
+              fill
+              className="rounded-xl object-cover"
+            />
+          </div>
 
           <RecipeDetailsInformation recipe={recipe} />
         </div>

@@ -2,8 +2,8 @@ mutation AddNewCommemt($input: CommentCreateInput!) {
   createComment(input: $input) {
     id
     content
+    createdAt
     author {
-      id
       avatarUrl
       profile {
         fullName
