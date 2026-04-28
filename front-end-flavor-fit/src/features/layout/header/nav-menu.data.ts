@@ -35,7 +35,7 @@ export const navMenuItems: IMenuItem[] = [
   {
     icon: Store,
     label: 'Order Groceries',
-    href: PAGES.ORDER_GROCERIES
+    href: PAGES.MY_ORDERS
   },
   {
     icon: BookMarked,

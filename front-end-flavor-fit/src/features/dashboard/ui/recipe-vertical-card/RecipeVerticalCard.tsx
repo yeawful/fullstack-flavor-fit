@@ -30,7 +30,7 @@ interface Props {
 
 export function RecipeVerticalCard({ recipe }: Props) {
   return (
-    <div className="rounded-4xl bg-white p-5">
+    <div className="flex min-h-208 flex-col rounded-4xl bg-white p-5">
       <Image
         src={recipe?.image || ''}
         alt={recipe?.title || ''}
@@ -59,7 +59,7 @@ export function RecipeVerticalCard({ recipe }: Props) {
 
       <RecipeDetailsIngredients recipeIngredients={recipe?.recipeIngredients} />
 
-      <div className="mt-4 flex items-center justify-between">
+      <div className="mt-auto flex items-center justify-between">
         <RecipeCardDifficultyBadge
           difficultyLevel={recipe?.difficulty || Difficulty.Easy}
           size="default"

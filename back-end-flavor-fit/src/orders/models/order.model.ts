@@ -20,5 +20,8 @@ export class OrderModel {
 	updatedAt!: Date
 
 	@Field(() => [OrderItemModel], { nullable: false })
-	items?: OrderItemModel[]
+	items!: OrderItemModel[]
+
+	@Field(() => Number, { nullable: false })
+	total!: number
 }

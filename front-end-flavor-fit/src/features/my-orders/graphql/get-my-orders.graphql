@@ -1,0 +1,8 @@
+query GetMyOrders {
+  myOrders {
+    orderId
+    status
+    total
+    createdAt
+  }
+}

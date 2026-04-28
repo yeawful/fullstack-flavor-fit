@@ -11,7 +11,7 @@ import { ISidebarMenuAccordionItem } from './sidebar-menu-accordion.types'
 interface Props<K extends string = string> {
   item: ISidebarMenuAccordionItem<K>
   activeValue?: string | null
-  onValueChange?: (value: string) => void
+  onValueChange?: ((value: string) => void) | null
 }
 
 export function MenuAccordionItem<K extends string = string>({
@@ -19,13 +19,18 @@ export function MenuAccordionItem<K extends string = string>({
   activeValue,
   onValueChange
 }: Props<K>) {
+  console.log(onValueChange)
+
   return (
     <Collapsible defaultOpen={item.isInitialOpen}>
       <CollapsibleTrigger
         className={cn(
           'flex w-full items-center justify-between rounded-xl px-2 py-1.5 opacity-80',
           {
-            'bg-accent': item.items.some(child => child.value === activeValue)
+            'bg-accent':
+              item.items.some(child => child.value === activeValue) ||
+              activeValue === 'active',
+            'cursor-not-allowed!': !onValueChange
           }
         )}
       >
@@ -37,36 +42,41 @@ export function MenuAccordionItem<K extends string = string>({
           {item.name}
         </span>
 
-        <ChevronDown size={20} />
+        {item.items.length > 0 && <ChevronDown size={20} />}
       </CollapsibleTrigger>
-      <CollapsibleContent>
-        <ul className="space-y-2 pt-2 pl-4">
-          {item.items.map(child => (
-            <li
-              key={child.value}
-              className={cn('opacity-50', {
-                'opacity-100': activeValue === child.value
-              })}
-            >
-              <button
-                className="flex w-full items-center justify-between"
-                onClick={() => onValueChange?.(child.value)}
+      {item.items.length > 0 && (
+        <CollapsibleContent>
+          <ul className="space-y-2 pt-2 pl-4">
+            {item.items.map(child => (
+              <li
+                key={child.value}
+                className={cn('opacity-50', {
+                  'opacity-100': activeValue === child.value
+                })}
               >
-                <span className="flex items-center gap-1.5">
-                  <CornerDownRight size="18" />
-                  <span>{child.label}</span>
-                </span>
-
-                {!!child.bagdeValue && (
-                  <span className="mr-2 block rounded-xl bg-red-200 px-1 py-0.5 text-xs font-semibold text-red-600">
-                    {child.bagdeValue}
+                <button
+                  className={cn('flex w-full items-center justify-between', {
+                    'cursor-not-allowed!': !onValueChange
+                  })}
+                  onClick={() => onValueChange?.(child.value)}
+                  disabled={!onValueChange}
+                >
+                  <span className="flex items-center gap-1.5">
+                    <CornerDownRight size="18" />
+                    <span>{child.label}</span>
                   </span>
-                )}
-              </button>
-            </li>
-          ))}
-        </ul>
-      </CollapsibleContent>
+
+                  {!!child.badgeValue && (
+                    <span className="mr-2 block rounded-xl bg-red-200 px-1 py-0.5 text-xs font-semibold text-red-600">
+                      {child.badgeValue}
+                    </span>
+                  )}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </CollapsibleContent>
+      )}
     </Collapsible>
   )
 }

@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 import { GetRecipeBySlugQuery } from '@/__generated__/graphql'
 
-import { RecipeDetailSteps } from '../recipe-details-steps/RecipeDetailSteps'
+import { RecipeDetailsSteps } from '../recipe-details-steps/RecipeDetailsSteps'
 import { RecipeDetailsInformation } from './RecipeDetailsInformation'
 
 interface Props {
@@ -28,7 +28,7 @@ export function RecipeDetailsContent({ recipe }: Props) {
           <RecipeDetailsInformation recipe={recipe} />
         </div>
 
-        <RecipeDetailSteps steps={recipe?.recipeSteps} />
+        <RecipeDetailsSteps steps={recipe?.recipeSteps} />
       </div>
     </div>
   )

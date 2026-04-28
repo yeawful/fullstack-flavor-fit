@@ -16,6 +16,7 @@ export function UserInfo({ avatarUrl, name, email }: Props) {
         height={36}
         className="size-9 rounded-full object-cover"
       />
+
       <div>
         <p className="font-medium">{name}</p>
         <p className="text-sm opacity-60">{email}</p>

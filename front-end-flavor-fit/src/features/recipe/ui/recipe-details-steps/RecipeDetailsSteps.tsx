@@ -7,7 +7,7 @@ interface Props {
   steps: GetRecipeBySlugQuery['recipeBySlug']['recipeSteps']
 }
 
-export function RecipeDetailSteps({ steps }: Props) {
+export function RecipeDetailsSteps({ steps }: Props) {
   return (
     <div className="mt-8">
       <div className={`mb-3 flex items-center`}>

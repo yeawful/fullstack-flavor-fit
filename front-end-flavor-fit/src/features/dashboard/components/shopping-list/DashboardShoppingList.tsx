@@ -1,10 +1,65 @@
 import { Button } from '@/shared/components/ui/button'
+import { useIngredientsCartStore } from '@/store'
+import { useMutation } from '@apollo/client/react'
 import { Loader2, ShoppingCart } from 'lucide-react'
+import { useRouter } from 'next/navigation'
+import { useState } from 'react'
+import toast from 'react-hot-toast'
+
+import { PAGES } from '@/shared/config/page.config'
+
+import { CreateOrderDocument, OrderItemInput } from '@/__generated__/graphql'
 
 import { DashboardCardWrapper } from '../../ui/card-wrapper/DashboardCardWrapper'
 import { DashboardShoppingItem } from './DashboardShoppingItem'
 
 export function DashboardShoppingList() {
+  const [checkedItems, setCheckedItems] = useState<OrderItemInput[]>([])
+
+  const toggle = (id: string, quantity: number) => {
+    setCheckedItems(prev => {
+      const isChecked = prev.some(item => item.ingredientId === id)
+
+      if (isChecked) {
+        return prev.filter(item => item.ingredientId !== id)
+      }
+
+      return [...prev, { ingredientId: id, quantity }]
+    })
+  }
+
+  const router = useRouter()
+
+  const items = useIngredientsCartStore(state => state.items)
+  const removeItems = useIngredientsCartStore(state => state.removeItems)
+
+  const [mutate, { loading }] = useMutation(CreateOrderDocument, {
+    onCompleted: ({ createOrder }) => {
+      toast.success('Order created successfully!')
+      router.push(
+        PAGES.ORDER_DETAIL(
+          createOrder.orderId + '?status=' + createOrder.status
+        )
+      )
+    }
+  })
+
+  const checkout = () => {
+    if (!checkedItems.length) {
+      return
+    }
+
+    mutate({
+      variables: {
+        input: {
+          items: checkedItems
+        }
+      }
+    })
+
+    removeItems(checkedItems.map(item => item.ingredientId))
+  }
+
   return (
     <DashboardCardWrapper
       Icon={ShoppingCart}

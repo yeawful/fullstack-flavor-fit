@@ -18,12 +18,12 @@ export function RecipeSidebar({
   setSearchTerm,
   setFilters
 }: Props) {
-  const setActiveFilter = (key: keyof TRecipeFilters, filter: string) => {
-    setFilters({ [key]: filter })
+  const setActiveFilter = (key: keyof TRecipeFilters, value: string) => {
+    setFilters({ [key]: value })
   }
 
   return (
-    <div className="w-full max-w-64 space-y-6 rounded-2xl bg-white px-3 py-4">
+    <aside className="w-full max-w-64 space-y-6 rounded-2xl bg-white px-3 py-4">
       <InputLabel
         Icon={Search}
         placeholder="Search by recipes"
@@ -37,6 +37,6 @@ export function RecipeSidebar({
         values={filters}
         onValueChange={setActiveFilter}
       />
-    </div>
+    </aside>
   )
 }

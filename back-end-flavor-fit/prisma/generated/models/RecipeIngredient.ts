@@ -377,9 +377,9 @@ export type RecipeIngredientOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
-export type RecipeIngredientScalarRelationFilter = {
-  is?: Prisma.RecipeIngredientWhereInput
-  isNot?: Prisma.RecipeIngredientWhereInput
+export type RecipeIngredientNullableScalarRelationFilter = {
+  is?: Prisma.RecipeIngredientWhereInput | null
+  isNot?: Prisma.RecipeIngredientWhereInput | null
 }
 
 export type RecipeIngredientRecipeIdIngredientIdCompoundUniqueInput = {
@@ -473,10 +473,12 @@ export type RecipeIngredientCreateNestedOneWithoutOrderItemsInput = {
   connect?: Prisma.RecipeIngredientWhereUniqueInput
 }
 
-export type RecipeIngredientUpdateOneRequiredWithoutOrderItemsNestedInput = {
+export type RecipeIngredientUpdateOneWithoutOrderItemsNestedInput = {
   create?: Prisma.XOR<Prisma.RecipeIngredientCreateWithoutOrderItemsInput, Prisma.RecipeIngredientUncheckedCreateWithoutOrderItemsInput>
   connectOrCreate?: Prisma.RecipeIngredientCreateOrConnectWithoutOrderItemsInput
   upsert?: Prisma.RecipeIngredientUpsertWithoutOrderItemsInput
+  disconnect?: Prisma.RecipeIngredientWhereInput | boolean
+  delete?: Prisma.RecipeIngredientWhereInput | boolean
   connect?: Prisma.RecipeIngredientWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.RecipeIngredientUpdateToOneWithWhereWithoutOrderItemsInput, Prisma.RecipeIngredientUpdateWithoutOrderItemsInput>, Prisma.RecipeIngredientUncheckedUpdateWithoutOrderItemsInput>
 }

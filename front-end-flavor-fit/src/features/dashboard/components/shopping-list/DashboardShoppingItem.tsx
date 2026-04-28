@@ -1,4 +1,5 @@
 import { cn } from '@/shared/utils'
+import { ICartItem } from '@/store/types'
 import Image from 'next/image'
 
 export function DashboardShoppingItem({

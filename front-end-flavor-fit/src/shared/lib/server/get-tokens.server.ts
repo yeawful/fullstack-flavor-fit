@@ -54,7 +54,6 @@ export async function getTokens(request: NextRequest) {
         )
 
         if (isInvalid) {
-          console.log('Access token is invalid, deleting it')
           request.cookies.delete(ACCESS_TOKEN)
           request.cookies.delete(REFRESH_TOKEN)
           return null

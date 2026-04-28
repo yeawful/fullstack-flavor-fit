@@ -21,7 +21,6 @@ export async function jwtVerifyServer(accessToken: string) {
       error instanceof Error &&
       error.message.includes('exp claim timestamp check failed')
     ) {
-      console.log('Token has expired')
       return null
     }
 

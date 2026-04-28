@@ -6,9 +6,14 @@ class PageConfig {
   readonly MEAL_PLANS = this.DASHBOARD + '/meal-plans'
   readonly NUTRITION = this.DASHBOARD + '/nutrition'
   readonly ANALYTICS = this.DASHBOARD + '/analytics'
-  readonly ORDER_GROCERIES = this.DASHBOARD + '/order-groceries'
+
+  readonly MY_ORDERS = this.DASHBOARD + '/my-orders'
+  readonly ORDER_DETAIL = (orderId: string) => this.MY_ORDERS + `/${orderId}`
+  readonly PAYMENT = this.DASHBOARD + '/payment'
+
   readonly RECIPES = this.DASHBOARD + '/recipes'
   readonly RECIPE_DETAIL = (slug: string) => this.RECIPES + `/${slug}`
+
   readonly PROFILE = this.DASHBOARD + '/profile'
 
   private readonly AUTH = '/auth'

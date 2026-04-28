@@ -6,7 +6,7 @@ model Order {
   total   Decimal
 
   user   User   @relation(fields: [userId], references: [id])
-  userId String @unique @map("user_id")
+  userId String @map("user_id")
 
   items OrderItem[]
 
@@ -19,8 +19,8 @@ model Order {
 model OrderItem {
   id String @id @default(cuid())
 
-  recipeIngredient   RecipeIngredient @relation(fields: [recipeIngredientid], references: [id])
-  recipeIngredientid String           @map("recipe_ingredient_id")
+  ingredient   Ingredient @relation(fields: [ingredientId], references: [id])
+  ingredientId String     @map("ingredient_id")
 
   quantity Decimal? @default(1)
   price    Decimal
@@ -28,8 +28,10 @@ model OrderItem {
   order   Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
   orderId String @map("order_id")
 
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
+  createdAt          DateTime          @default(now()) @map("created_at")
+  updatedAt          DateTime          @updatedAt @map("updated_at")
+  recipeIngredient   RecipeIngredient? @relation(fields: [recipeIngredientId], references: [id])
+  recipeIngredientId String?           @map("recipe_ingredient_id")
 
   @@map("order_items")
 }

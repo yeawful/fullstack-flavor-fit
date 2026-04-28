@@ -4,7 +4,7 @@ import { OrderStatus } from '../enums'
 @InputType()
 export class OrderItemInput {
 	@Field(() => ID)
-	recipeIngredientId!: string
+	ingredientId!: string
 
 	@Field(() => Float, { defaultValue: 1 })
 	quantity!: number

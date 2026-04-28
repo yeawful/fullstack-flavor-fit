@@ -17,7 +17,7 @@ export function RecipeDetailsInformation({ recipe }: Props) {
           {recipe?.title}
         </h1>
 
-        <RecipeDetailsActions />
+        <RecipeDetailsActions recipeIngredients={recipe?.recipeIngredients} />
       </div>
 
       <RecipeDetailsMeta recipe={recipe} />
