@@ -1,6 +1,6 @@
 import { Eye, Heart } from 'lucide-react'
 
-import { formatCompactNumber } from '@/shared/utils/format-compact-number.utils'
+import { formatCompactNumber } from '@/shared/utils/format-compact-number.util'
 
 import { Difficulty } from '@/__generated__/graphql'
 

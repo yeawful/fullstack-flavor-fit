@@ -1,0 +1,26 @@
+query GetRandomRecipe {
+  randomRecipe {
+    id
+    image
+    title
+    description
+    slug
+    calories
+    cookingTime
+    difficulty
+    mealType
+    likes
+    views
+
+    recipeIngredients {
+      quantity
+      unit
+      ingredient {
+        id
+        name
+        iconUrl
+        price
+      }
+    }
+  }
+}

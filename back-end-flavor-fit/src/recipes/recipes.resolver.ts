@@ -30,6 +30,13 @@ export class RecipesResolver {
 		return this.recipesService.getBySlug(slug)
 	}
 
+	@Query(() => RecipeModel, {
+		name: 'randomRecipe'
+	})
+	getRandom() {
+		return this.recipesService.getRandom()
+	}
+
 	@Query(() => [RecipeModel], {
 		name: 'adminRecipes'
 	})

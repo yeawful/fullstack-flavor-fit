@@ -1,4 +1,5 @@
 'use client'
+import { SkeletonLoader } from '@/shared/components/custom-ui/SkeletonLoader'
 import { NavMenu } from '@/shared/components/custom-ui/nav-menu/NavMenu'
 import { UserInfo } from '@/shared/components/custom-ui/user-info/UserInfo'
 import { Button } from '@/shared/components/ui/button'
@@ -13,7 +14,7 @@ import { Logout } from '../../auth/ui/Logout'
 import { navMenuItems } from './nav-menu.data'
 
 export function Header() {
-  const { user } = useAuth()
+  const { user, isLoading } = useAuth()
 
   return (
     <header className="flex items-center justify-between">
@@ -44,11 +45,22 @@ export function Header() {
 
         <Logout />
 
-        <UserInfo
-          avatarUrl={'/images/avatar-placeholder.png'}
-          name={'Anonymous'}
-          email={user?.email || ''}
-        />
+        {isLoading ? (
+          <div className="flex items-center gap-2">
+            <SkeletonLoader className="size-9" />
+
+            <div>
+              <SkeletonLoader className="mb-1 h-4 w-20" />
+              <SkeletonLoader className="h-4 w-16" />
+            </div>
+          </div>
+        ) : (
+          <UserInfo
+            avatarUrl={user?.avatarUrl || ''}
+            name={user?.profile?.fullName || 'Anonymous'}
+            email={user?.email || ''}
+          />
+        )}
       </div>
     </header>
   )

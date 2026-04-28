@@ -16,7 +16,7 @@ export function RecipeDetailsContent({ recipe }: Props) {
     <div>
       <div className="rounded-2xl bg-white p-5">
         <div className="grid grid-cols-2 gap-5">
-          <div className="relative h-86.5 w-full">
+          <div className="relative h-90 w-full">
             <Image
               src={recipe?.image || ''}
               alt={recipe?.title || ''}

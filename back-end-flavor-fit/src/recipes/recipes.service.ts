@@ -80,6 +80,38 @@ export class RecipesService {
 		}
 	}
 
+	async getRandom() {
+		const count = await this.prisma.recipe.count()
+		const randomIndex = Math.floor(Math.random() * count)
+
+		const recipes = await this.prisma.recipe.findMany({
+			skip: randomIndex,
+			take: 1,
+			include: {
+				recipeSteps: true,
+				recipeIngredients: {
+					include: {
+						ingredient: true
+					}
+				},
+				author: true,
+				nutritionFact: true,
+				tags: true,
+				comments: {
+					include: {
+						author: {
+							include: {
+								profile: true
+							}
+						}
+					}
+				}
+			}
+		})
+
+		return recipes[0]
+	}
+
 	async getBySlug(slug: string) {
 		const recipe = await this.prisma.recipe.findUnique({
 			where: {

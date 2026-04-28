@@ -3,7 +3,7 @@ import dayjs from 'dayjs'
 import { Eye, Heart, MessageCircleMore } from 'lucide-react'
 import Image from 'next/image'
 
-import { formatCompactNumber } from '@/shared/utils/format-compact-number.utils'
+import { formatCompactNumber } from '@/shared/utils/format-compact-number.util'
 
 import { GetRecipeBySlugQuery } from '@/__generated__/graphql'
 
