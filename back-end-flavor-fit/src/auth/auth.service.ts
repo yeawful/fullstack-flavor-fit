@@ -55,6 +55,9 @@ export class AuthService {
 					password: await hash(input.password),
 					emailVerificationToken,
 					emailVerificationTokenExpiresAt: new Date(Date.now() + 1000 * 60 * 60)
+				},
+				include: {
+					profile: true
 				}
 			})
 

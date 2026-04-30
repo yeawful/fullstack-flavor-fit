@@ -66,7 +66,7 @@ export function DashboardShoppingList() {
       title="Shopping list"
     >
       <div className="flex h-[88%] flex-col justify-between">
-        <div className="max-h-69 overflow-y-auto rounded-3xl">
+        <div className="max-h-75 overflow-y-auto rounded-3xl">
           <div className="flex flex-col">
             {items.map(item => (
               <DashboardShoppingItem

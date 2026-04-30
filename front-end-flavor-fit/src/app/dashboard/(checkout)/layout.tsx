@@ -23,7 +23,7 @@ export default function Layout({ children }: PropsWithChildren<unknown>) {
   console.log(filters)
 
   return (
-    <div className="grid min-h-0 grid-cols-[1fr_minmax(0,5fr)] gap-7">
+    <div className="grid min-h-0 grid-cols-[1fr_minmax(0,5fr)]">
       <OrderSidebar filters={filters} />
 
       <main className="min-h-0">{children}</main>

@@ -1,0 +1,20 @@
+query GetByOrderId($orderId: String!) {
+  getByOrderId(orderId: $orderId) {
+    id
+    orderId
+    total
+    status
+    createdAt
+    items {
+      id
+      quantity
+      price
+      ingredient {
+        id
+        name
+        price
+        iconUrl
+      }
+    }
+  }
+}

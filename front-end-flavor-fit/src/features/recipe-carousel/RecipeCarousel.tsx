@@ -57,7 +57,7 @@ export const RecipeCarousel = memo(function RecipeCarousel({
       </HeadingWithIcon>
 
       <Carousel setApi={setApi}>
-        <CarouselContent className="px-5 py-4">
+        <CarouselContent className="px-5 py-4 pl-0">
           {recipes.map(recipe => (
             <CarouselItem
               key={recipe.slug}

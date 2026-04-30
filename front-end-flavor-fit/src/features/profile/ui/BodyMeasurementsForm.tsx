@@ -4,7 +4,7 @@ import { Activity, Goal, Ruler, Weight } from 'lucide-react'
 import Image from 'next/image'
 import { Controller, UseFormReturn } from 'react-hook-form'
 
-import { ActivityLevel, NutritionGoal } from '@/__generated__/graphql'
+import { ActivityLevel, Gender, NutritionGoal } from '@/__generated__/graphql'
 
 import { TProfileForm } from '../types/profile-update.types'
 
@@ -13,13 +13,18 @@ export function BodyMeasurementsForm({
 }: {
   form: UseFormReturn<TProfileForm>
 }) {
-  const { register } = form
+  const { register, watch } = form
+
+  const gender = watch('profile.gender')
+
+  const imageSrc =
+    gender === Gender.Male ? '/images/men.png' : '/images/women.png'
 
   return (
     <div className="flex items-center gap-6 rounded-xl border p-6">
       <Image
-        src="/images/women.jpeg"
-        alt="Women"
+        src={imageSrc}
+        alt="Person"
         width={200}
         height={1000}
         className="mb-6 rounded-lg"
